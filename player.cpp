@@ -29,6 +29,11 @@ bool Player::isStopped() const
     return mIsStopped;
 }
 
+int Player::getFrameRate() const
+{
+    return mFrameRate;
+}
+
 void Player::play()
 {
     if (!isRunning()) {
