@@ -15,6 +15,24 @@ HEADERS += mainwindow.h \
 FORMS += mainwindow.ui
 
 # OpenCV support
-LIBS += $$PWD\opencv\bin\libopencv*.dll \
-    $$PWD\opencv\bin\opencv_ffmpeg2413.dll
-INCLUDEPATH += $$PWD\opencv\include
+INCLUDEPATH += $$PWD\\opencv\\include
+LIBS += -L$$PWD\\opencv\\bin \
+    -llibopencv_calib3d2413d \
+    -llibopencv_contrib2413d \
+    -llibopencv_core2413d \
+    -llibopencv_features2d2413d \
+    -llibopencv_flann2413d \
+    -llibopencv_gpu2413d \
+    -llibopencv_highgui2413d \
+    -llibopencv_imgproc2413d \
+    -llibopencv_legacy2413d \
+    -llibopencv_ml2413d \
+    -llibopencv_nonfree2413d \
+    -llibopencv_objdetect2413d \
+    -llibopencv_ocl2413d \
+    -llibopencv_photo2413d \
+    -llibopencv_stitching2413d \
+    -llibopencv_superres2413d \
+    -llibopencv_video2413d \
+    -llibopencv_videostab2413d \
+    -lopencv_ffmpeg2413
