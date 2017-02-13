@@ -18,13 +18,12 @@ public:
     explicit Player(QObject* parent = nullptr);
     ~Player();
 
-    bool loadVideo(std::string);
+    bool isStopped() const;
+    int getFrameRate() const;
 
     void play();
     void stop();
-
-    int getFrameRate() const;
-    bool isStopped() const;
+    bool loadVideo(std::string);
 
 protected:
     void run();
