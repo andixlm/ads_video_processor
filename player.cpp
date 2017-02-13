@@ -1,6 +1,9 @@
+#include <QImage>
 #include <QThread>
 
 #include "player.h"
+
+const int FRAME_CHANNEL_RGB = 3;
 
 Player::Player(QObject* parent) :
     QThread(parent)
@@ -48,4 +51,32 @@ bool Player::loadVideo(std::string fileName)
     }
 
     return false;
+}
+
+void Player::run()
+{
+    int delay = 1000 / mFrameRate;
+
+    while(!mIsStopped) {
+        if (!mCapture.read(mFrame))
+            mIsStopped = true;
+
+        if (mFrame.channels() == FRAME_CHANNEL_RGB) {
+            cv::cvtColor(mFrame, mRGBFrame, CV_BGR2RGB);
+            mImage = QImage(static_cast<const unsigned char*>(mRGBFrame.data),
+                                  mRGBFrame.cols, mRGBFrame.rows, QImage::Format_RGB888);
+        } else {
+            mImage = QImage(static_cast<const unsigned char*>(mFrame.data),
+                            mFrame.cols, mFrame.rows, QImage::Format_Indexed8);
+        }
+
+        emit processedImage(mImage);
+        this->msleep(delay);
+    }
+}
+
+void Player::msleep(int ms)
+{
+    struct timespec ts = { ms / 1000, (ms % 1000) * 1000 * 1000 };
+    nanosleep(&ts, NULL);
 }
