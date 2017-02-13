@@ -20,3 +20,19 @@ Player::~Player()
 
     wait();
 }
+
+void Player::play()
+{
+    if (!isRunning()) {
+        if (isStopped()) {
+            mIsStopped = false;
+        }
+
+        start(LowPriority);
+    }
+}
+
+void Player::stop()
+{
+    mIsStopped = true;
+}
