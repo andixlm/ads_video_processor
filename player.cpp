@@ -24,6 +24,11 @@ Player::~Player()
     wait();
 }
 
+bool Player::isStopped() const
+{
+    return mIsStopped;
+}
+
 void Player::play()
 {
     if (!isRunning()) {
