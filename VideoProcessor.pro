@@ -6,9 +6,11 @@ TEMPLATE = app
 
 DEFINES += QT_DEPRECATED_WARNINGS
 
-SOURCES += main.cpp mainwindow.cpp
+SOURCES += main.cpp mainwindow.cpp \
+    player.cpp
 
-HEADERS += mainwindow.h
+HEADERS += mainwindow.h \
+    player.h
 
 FORMS += mainwindow.ui
 
