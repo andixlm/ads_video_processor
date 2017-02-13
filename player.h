@@ -27,7 +27,6 @@ public:
 
 protected:
     void run();
-    void msleep(int);
 
 private:
     bool mIsStopped;

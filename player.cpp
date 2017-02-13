@@ -81,12 +81,6 @@ void Player::run()
         }
 
         emit processedImage(mImage);
-        this->msleep(delay);
+        msleep(delay);
     }
-}
-
-void Player::msleep(int ms)
-{
-    struct timespec ts = { ms / 1000, (ms % 1000) * 1000 * 1000 };
-    nanosleep(&ts, NULL);
 }
