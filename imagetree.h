@@ -16,7 +16,6 @@ public:
     ImageTree(Node* head = nullptr);
 
     void add(Polygon polygon);
-    void remove(Polygon polygon);
 
 private:
     Node* mHead;
