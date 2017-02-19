@@ -1,5 +1,11 @@
 #include "imagetree.h"
 
+Node::Node(Polygon polygon, Node* parent, Node* leftChild, Node* rightChild) :
+    mPolygon(polygon), mParent(parent), mLeftChild(leftChild), mRightChild(rightChild)
+{
+
+}
+
 ImageTree::ImageTree(Node* head) :
     mHead(head)
 {

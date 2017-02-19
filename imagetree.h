@@ -3,9 +3,20 @@
 
 #include "polygon.h"
 
+class ImageTree;
+
 class Node
 {
+    friend ImageTree;
+
+public:
+    Node(Polygon polygon = Polygon(), Node* parent = nullptr,
+         Node* leftChild = nullptr, Node* rightChild = nullptr);
+
+private:
     Polygon mPolygon;
+
+    Node* mParent;
     Node* mLeftChild;
     Node* mRightChild;
 };
