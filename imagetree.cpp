@@ -8,7 +8,7 @@ ImageTree::ImageTree(Node* head) :
 
 void ImageTree::clear()
 {
-    _clear(getHead);
+    _clear(getHead());
     mHead = nullptr;
 }
 
