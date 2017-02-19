@@ -5,10 +5,12 @@ TEMPLATE = app
 
 SOURCES += main.cpp mainwindow.cpp \
     player.cpp \
+    polygon.cpp \
     rgb.cpp
 
 HEADERS += mainwindow.h \
     player.h \
+    polygon.h \
     rgb.h
 
 FORMS += mainwindow.ui
