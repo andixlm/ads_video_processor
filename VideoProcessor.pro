@@ -4,12 +4,14 @@ TARGET = VideoProcessor
 TEMPLATE = app
 
 SOURCES += main.cpp mainwindow.cpp \
+    fimage.cpp \
     imagetree.cpp \
     player.cpp \
     polygon.cpp \
     rgb.cpp
 
 HEADERS += mainwindow.h \
+    fimage.h \
     imagetree.h \
     player.h \
     polygon.h \
