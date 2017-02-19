@@ -28,7 +28,7 @@ private slots:
     void on_playButton_clicked();
     void on_stopButton_clicked();
 
-    void updatePlayerUI(QImage);
+    void updatePlayerUI(QImage image);
 };
 
 #endif // MAINWINDOW_H

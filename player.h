@@ -42,7 +42,7 @@ private:
     QImage mImage;
 
 signals:
-    void processedImage(const QImage&);
+    void processedImage(const QImage& image);
 };
 
 #endif // PLAYER_H
