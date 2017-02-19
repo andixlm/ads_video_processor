@@ -20,7 +20,7 @@ public:
 
 private:
     Ui::MainWindow* ui;
-    Player* player;
+    Player* mPlayer;
 
 private slots:
     void on_actionOpen_triggered();

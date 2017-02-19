@@ -13,14 +13,14 @@ MainWindow::MainWindow(QWidget* parent) :
 {
     ui->setupUi(this);
 
-    player = new Player;
-    connect(player, &Player::processedImage,
+    mPlayer = new Player(this);
+    connect(mPlayer, &Player::processedImage,
             this, &MainWindow::updatePlayerUI);
 }
 
 MainWindow::~MainWindow()
 {
-    delete player;
+    delete mPlayer;
     delete ui;
 }
 
@@ -30,19 +30,19 @@ void MainWindow::on_actionOpen_triggered()
                                                     tr("*.avi *.mp4 *.mpg"));
 
     if (!fileName.isEmpty())
-        player->loadVideo(fileName.toStdString());
+        mPlayer->loadVideo(fileName.toStdString());
 }
 
 void MainWindow::on_playButton_clicked()
 {
-    if (player->isStopped())
-        player->play();
+    if (mPlayer->isStopped())
+        mPlayer->play();
 }
 
 void MainWindow::on_stopButton_clicked()
 {
-    if (!player->isStopped())
-        player->stop();
+    if (!mPlayer->isStopped())
+        mPlayer->stop();
 }
 
 void MainWindow::updatePlayerUI(QImage image)
