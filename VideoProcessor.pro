@@ -4,10 +4,12 @@ TARGET = VideoProcessor
 TEMPLATE = app
 
 SOURCES += main.cpp mainwindow.cpp \
-    player.cpp
+    player.cpp \
+    rgb.cpp
 
 HEADERS += mainwindow.h \
-    player.h
+    player.h \
+    rgb.h
 
 FORMS += mainwindow.ui
 
