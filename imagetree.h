@@ -26,7 +26,7 @@ class ImageTree
 public:
     ImageTree(Node* head = nullptr);
 
-    void add(Polygon polygon);
+    void insert(Polygon polygon) { mHead = _insert(polygon, mHead); }
     void clear() { _clear(mHead); mHead = nullptr; }
 
     Node* getHead();
@@ -34,7 +34,10 @@ public:
 private:
     Node* mHead;
 
+    Node* _insert(Polygon polygon = Polygon(), Node* parent = nullptr, Node* node = nullptr);
     void _clear(Node* node);
+
+    bool isLeftChild(Polygon& newPolygon, Polygon& currentPolygon);
 };
 
 #endif // IMAGETREE_H

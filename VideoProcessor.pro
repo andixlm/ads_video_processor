@@ -11,6 +11,7 @@ SOURCES += main.cpp mainwindow.cpp \
     rgb.cpp
 
 HEADERS += mainwindow.h \
+    exception.h \
     fimage.h \
     imagetree.h \
     player.h \
