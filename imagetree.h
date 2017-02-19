@@ -16,9 +16,14 @@ public:
     ImageTree(Node* head = nullptr);
 
     void add(Polygon polygon);
+    void clear();
+
+    Node* getHead();
 
 private:
     Node* mHead;
+
+    void _clear(Node* node);
 };
 
 #endif // IMAGETREE_H
