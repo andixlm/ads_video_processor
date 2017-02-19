@@ -27,7 +27,7 @@ public:
     ImageTree(Node* head = nullptr);
 
     void add(Polygon polygon);
-    void clear();
+    void clear() { _clear(mHead); mHead = nullptr; }
 
     Node* getHead();
 

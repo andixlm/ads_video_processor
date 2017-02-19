@@ -12,12 +12,6 @@ ImageTree::ImageTree(Node* head) :
 
 }
 
-void ImageTree::clear()
-{
-    _clear(mHead);
-    mHead = nullptr;
-}
-
 void ImageTree::_clear(Node* node)
 {
     if (!node)
