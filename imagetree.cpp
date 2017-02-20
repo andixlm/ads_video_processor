@@ -13,6 +13,11 @@ ImageTree::ImageTree(Node* head) :
 
 }
 
+ImageTree::~ImageTree()
+{
+    _clear(mHead);
+}
+
 Node* ImageTree::_insert(Polygon polygon, Node* parent, Node* node)
 {
     if (!node) {
