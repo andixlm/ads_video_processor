@@ -1,6 +1,3 @@
-#include <QImage>
-#include <QThread>
-
 #include "player.h"
 
 const int FRAME_CHANNEL_RGB = 3;
