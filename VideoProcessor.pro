@@ -4,7 +4,6 @@ TARGET = VideoProcessor
 TEMPLATE = app
 
 SOURCES += main.cpp mainwindow.cpp \
-    fimage.cpp \
     imagetree.cpp \
     imageview.cpp \
     player.cpp \
@@ -13,7 +12,6 @@ SOURCES += main.cpp mainwindow.cpp \
 
 HEADERS += mainwindow.h \
     exception.h \
-    fimage.h \
     imagetree.h \
     imageview.h \
     player.h \
