@@ -22,7 +22,7 @@ public:
     int getFrameRate() const;
 
     void play();
-    void stop();
+    void pause();
     bool loadVideo(std::string);
     bool closeVideo();
 

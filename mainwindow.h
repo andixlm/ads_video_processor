@@ -28,7 +28,7 @@ private slots:
     void on_actionExit_triggered();
 
     void on_playButton_clicked();
-    void on_stopButton_clicked();
+    void on_pauseButton_clicked();
 
     void updatePlayerUI(QImage image);
 };

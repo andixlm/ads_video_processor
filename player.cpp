@@ -42,7 +42,7 @@ void Player::play()
     }
 }
 
-void Player::stop()
+void Player::pause()
 {
     mIsStopped = true;
 }

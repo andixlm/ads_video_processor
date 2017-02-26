@@ -6,8 +6,8 @@ void MainWindow::on_playButton_clicked()
         mPlayer->play();
 }
 
-void MainWindow::on_stopButton_clicked()
+void MainWindow::on_pauseButton_clicked()
 {
     if (!mPlayer->isStopped())
-        mPlayer->stop();
+        mPlayer->pause();
 }
