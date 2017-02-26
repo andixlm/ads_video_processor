@@ -47,6 +47,7 @@ private:
 
 signals:
     void processedImage(const QImage& image);
+    void emptyImage();
 };
 
 #endif // PLAYER_H

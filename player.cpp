@@ -59,6 +59,8 @@ void Player::stop()
 
     if (mCapture.get(CV_CAP_PROP_POS_AVI_RATIO) != 0)
         mCapture.set(CV_CAP_PROP_POS_AVI_RATIO, 0); // Set video to its start.
+
+    emit emptyImage();
 }
 
 bool Player::loadVideo(std::string fileName)
@@ -108,6 +110,7 @@ bool Player::closeVideo()
         return false;
 
     mCapture.release();
+    emit emptyImage();
 
     return true;
 }
@@ -132,4 +135,6 @@ void Player::run()
         emit processedImage(mImage);
         msleep(delay);
     }
+
+    emit emptyImage();
 }

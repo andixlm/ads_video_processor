@@ -16,6 +16,8 @@ MainWindow::MainWindow(QWidget* parent) :
     mPlayer = new Player(this);
     connect(mPlayer, &Player::processedImage,
             this, &MainWindow::updatePlayerUI);
+    connect(mPlayer, &Player::emptyImage,
+            this, &MainWindow::resetPlayerUI);
 }
 
 MainWindow::~MainWindow()
@@ -32,4 +34,9 @@ void MainWindow::updatePlayerUI(QImage image)
                                                                    Qt::KeepAspectRatio,
                                                                    Qt::FastTransformation));
     }
+}
+
+void MainWindow::resetPlayerUI()
+{
+    ui->videoFrame->setPixmap(QPixmap::fromImage(QImage()));
 }
