@@ -8,5 +8,5 @@ Rgb::Rgb(unsigned red, unsigned green, unsigned blue) :
 
 int Rgb::getBrightness()
 {
-    return static_cast<int> (mBrightness);
+    return static_cast<int>(mBrightness);
 }
