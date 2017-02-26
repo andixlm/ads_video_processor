@@ -19,7 +19,7 @@
      <rect>
       <x>10</x>
       <y>400</y>
-      <width>168</width>
+      <width>151</width>
       <height>31</height>
      </rect>
     </property>
@@ -47,6 +47,19 @@
        </property>
        <property name="text">
         <string>Pause</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="stopButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Stop</string>
        </property>
       </widget>
      </item>

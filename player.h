@@ -23,6 +23,7 @@ public:
 
     void play();
     void pause();
+    void stop();
     bool loadVideo(std::string);
     bool closeVideo();
 

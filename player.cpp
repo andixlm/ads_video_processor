@@ -47,6 +47,12 @@ void Player::pause()
     mIsStopped = true;
 }
 
+void Player::stop()
+{
+    if (mCapture.get(CV_CAP_PROP_POS_AVI_RATIO) != 0)
+        mCapture.set(CV_CAP_PROP_POS_AVI_RATIO, 0); // Set video to its start.
+}
+
 bool Player::loadVideo(std::string fileName)
 {
     mCapture.open(fileName);

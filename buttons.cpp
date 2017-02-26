@@ -11,3 +11,10 @@ void MainWindow::on_pauseButton_clicked()
     if (!mPlayer->isStopped())
         mPlayer->pause();
 }
+
+void MainWindow::on_stopButton_clicked()
+{
+    on_pauseButton_clicked();
+
+    mPlayer->stop();
+}
