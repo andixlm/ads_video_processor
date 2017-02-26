@@ -15,7 +15,7 @@ class Player : public QThread
     Q_OBJECT
 
 public:
-    Player(QObject* parent = nullptr);
+    explicit Player(QObject* parent = nullptr);
     ~Player();
 
     bool isStopped() const;
