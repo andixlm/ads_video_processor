@@ -84,7 +84,9 @@ bool Player::unpackVideo(std::string dirName)
                             mFrame.cols, mFrame.rows, QImage::Format_Indexed8);
         }
 
-        mImage.save(QString::fromStdString(dirName) + QString("\frame_") + QString::number(frameCount));
+        mImage.save(QString::fromStdString(dirName) +
+                    QString("\\frame_") + QString::number(frameCount)
+                    + QString(".jpg"));
     }
 
     mCapture.set(CV_CAP_PROP_POS_AVI_RATIO, currentPosition);
