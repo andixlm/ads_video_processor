@@ -71,7 +71,7 @@ bool Player::unpackVideo(std::string dirName)
     if (!mCapture.isOpened())
         return false;
 
-    double currentPosition = mCapture.get(CV_CAP_PROP_POS_AVI_RATIO);
+    double currentTimePosition = mCapture.get(CV_CAP_PROP_POS_MSEC);
     mCapture.set(CV_CAP_PROP_POS_AVI_RATIO, 0); // Set video to its start position.
 
     for (int frameCount = 0; mCapture.read(mFrame); ++frameCount) {
@@ -89,7 +89,7 @@ bool Player::unpackVideo(std::string dirName)
                     + QString(".jpg"));
     }
 
-    mCapture.set(CV_CAP_PROP_POS_AVI_RATIO, currentPosition);
+    mCapture.set(CV_CAP_PROP_POS_MSEC, currentTimePosition);
 
     return true;
 }
