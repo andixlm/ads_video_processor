@@ -24,7 +24,7 @@ void MainWindow::on_actionExit_triggered()
     QApplication::exit();
 }
 
-void MainWindow::on_actionUnpackVideo_tirggered()
+void MainWindow::on_actionUnpackVideo_triggered()
 {
     QString dirName = QFileDialog::getExistingDirectory(this, tr("Choose Directory"));
 

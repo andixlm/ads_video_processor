@@ -27,7 +27,7 @@ private slots:
     void on_actionClose_triggered();
     void on_actionExit_triggered();
 
-    void on_actionUnpackVideo_tirggered();
+    void on_actionUnpackVideo_triggered();
 
     void on_playButton_clicked();
     void on_pauseButton_clicked();
