@@ -26,6 +26,9 @@ void MainWindow::on_actionExit_triggered()
 
 void MainWindow::on_actionUnpackVideo_triggered()
 {
+    if (!mPlayer->isOpened())
+        return;
+
     if (!mPlayer->isStopped())
         mPlayer->pause();
 

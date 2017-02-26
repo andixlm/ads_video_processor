@@ -19,6 +19,7 @@ public:
     ~Player();
 
     bool isStopped() const;
+    bool isOpened() const;
     int getFrameRate() const;
 
     void play();

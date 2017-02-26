@@ -26,6 +26,11 @@ bool Player::isStopped() const
     return mIsStopped;
 }
 
+bool Player::isOpened() const
+{
+    return mCapture.isOpened();
+}
+
 int Player::getFrameRate() const
 {
     return mFrameRate;
