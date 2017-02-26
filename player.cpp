@@ -54,6 +54,9 @@ void Player::pause()
 
 void Player::stop()
 {
+    if (!isStopped())
+        pause();
+
     if (mCapture.get(CV_CAP_PROP_POS_AVI_RATIO) != 0)
         mCapture.set(CV_CAP_PROP_POS_AVI_RATIO, 0); // Set video to its start.
 }

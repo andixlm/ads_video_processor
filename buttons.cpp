@@ -14,7 +14,5 @@ void MainWindow::on_pauseButton_clicked()
 
 void MainWindow::on_stopButton_clicked()
 {
-    on_pauseButton_clicked();
-
     mPlayer->stop();
 }
