@@ -74,7 +74,7 @@ bool Player::unpackVideo(std::string dirName)
     double currentPosition = mCapture.get(CV_CAP_PROP_POS_AVI_RATIO);
     mCapture.set(CV_CAP_PROP_POS_AVI_RATIO, 0); // Set video to its start position.
 
-    for (int frameCount = 0; !mCapture.read(mFrame); ++frameCount) {
+    for (int frameCount = 0; mCapture.read(mFrame); ++frameCount) {
         if (mFrame.channels() == FRAME_CHANNEL_RGB) {
             cv::cvtColor(mFrame, mRGBFrame, CV_BGR2RGB);
             mImage = QImage(static_cast<const unsigned char*>(mRGBFrame.data),
