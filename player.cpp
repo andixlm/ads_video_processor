@@ -66,6 +66,32 @@ bool Player::loadVideo(std::string fileName)
     return false;
 }
 
+bool Player::unpackVideo(std::string dirName)
+{
+    if (!mCapture.isOpened())
+        return false;
+
+    double currentPosition = mCapture.get(CV_CAP_PROP_POS_AVI_RATIO);
+    mCapture.set(CV_CAP_PROP_POS_AVI_RATIO, 0); // Set video to its start position.
+
+    for (int frameCount = 0; !mCapture.read(mFrame); ++frameCount) {
+        if (mFrame.channels() == FRAME_CHANNEL_RGB) {
+            cv::cvtColor(mFrame, mRGBFrame, CV_BGR2RGB);
+            mImage = QImage(static_cast<const unsigned char*>(mRGBFrame.data),
+                                  mRGBFrame.cols, mRGBFrame.rows, QImage::Format_RGB888);
+        } else {
+            mImage = QImage(static_cast<const unsigned char*>(mFrame.data),
+                            mFrame.cols, mFrame.rows, QImage::Format_Indexed8);
+        }
+
+        mImage.save(QString::fromStdString(dirName) + QString("\frame_") + QString::number(frameCount));
+    }
+
+    mCapture.set(CV_CAP_PROP_POS_AVI_RATIO, currentPosition);
+
+    return true;
+}
+
 bool Player::closeVideo()
 {
     if (!mCapture.isOpened())

@@ -25,6 +25,7 @@ public:
     void pause();
     void stop();
     bool loadVideo(std::string);
+    bool unpackVideo(std::string);
     bool closeVideo();
 
 protected:
