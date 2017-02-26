@@ -24,7 +24,7 @@ private:
 class ImageTree
 {
 public:
-    ImageTree(Node* head = nullptr);
+    explicit ImageTree(Node* head = nullptr);
     ~ImageTree();
 
     void insert(Polygon polygon) { mHead = _insert(polygon, nullptr, mHead); }
