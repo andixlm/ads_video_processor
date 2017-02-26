@@ -14,6 +14,9 @@ void MainWindow::on_actionOpen_triggered()
 
 void MainWindow::on_actionClose_triggered()
 {
+    if (!mPlayer->isStopped())
+        mPlayer->pause();
+
     mPlayer->closeVideo();
 }
 
