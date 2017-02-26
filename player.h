@@ -24,6 +24,7 @@ public:
     void play();
     void stop();
     bool loadVideo(std::string);
+    bool closeVideo();
 
 protected:
     void run();

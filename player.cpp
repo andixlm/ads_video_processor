@@ -60,6 +60,16 @@ bool Player::loadVideo(std::string fileName)
     return false;
 }
 
+bool Player::closeVideo()
+{
+    if (!mCapture.isOpened())
+        return false;
+
+    mCapture.release();
+
+    return true;
+}
+
 void Player::run()
 {
     int delay = 1000 / mFrameRate;
