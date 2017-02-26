@@ -24,6 +24,8 @@ private:
 
 private slots:
     void on_actionOpen_triggered();
+    void on_actionClose_triggered();
+    void on_actionExit_triggered();
 
     void on_playButton_clicked();
     void on_stopButton_clicked();
