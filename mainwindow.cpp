@@ -24,27 +24,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_actionOpen_triggered()
-{
-    QString fileName = QFileDialog::getOpenFileName(this, tr("Open Video"), ".",
-                                                    tr("*.avi *.mp4 *.mpg"));
-
-    if (!fileName.isEmpty())
-        mPlayer->loadVideo(fileName.toStdString());
-}
-
-void MainWindow::on_playButton_clicked()
-{
-    if (mPlayer->isStopped())
-        mPlayer->play();
-}
-
-void MainWindow::on_stopButton_clicked()
-{
-    if (!mPlayer->isStopped())
-        mPlayer->stop();
-}
-
 void MainWindow::updatePlayerUI(QImage image)
 {
     if (!image.isNull()) {

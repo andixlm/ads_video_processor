@@ -4,8 +4,10 @@ TARGET = VideoProcessor
 TEMPLATE = app
 
 SOURCES += main.cpp mainwindow.cpp \
+    buttons.cpp \
     imagetree.cpp \
     imageview.cpp \
+    menus.cpp \
     player.cpp \
     polygon.cpp \
     rgb.cpp
