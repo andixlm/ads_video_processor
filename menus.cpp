@@ -26,6 +26,9 @@ void MainWindow::on_actionExit_triggered()
 
 void MainWindow::on_actionUnpackVideo_triggered()
 {
+    if (!mPlayer->isStopped())
+        mPlayer->pause();
+
     QString dirName = QFileDialog::getExistingDirectory(this, tr("Choose Directory"));
 
     if (!dirName.isEmpty())
