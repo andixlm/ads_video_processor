@@ -34,3 +34,16 @@ void MainWindow::on_actionUnpackVideo_triggered()
     if (!dirName.isEmpty())
         mPlayer->unpackVideo(dirName.toStdString());
 }
+
+void MainWindow::on_actionOpenCurrentFrame_triggered()
+{
+    if (getCurrentFrame().isNull())
+        return;
+
+    if (mImageView)
+        delete mImageView;
+
+    mImageView = new ImageView(nullptr, getCurrentFrame());
+    mImageView->setFixedSize(mImageView->width(), mImageView->height());
+    mImageView->show();
+}

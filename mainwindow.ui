@@ -111,6 +111,8 @@
      <string>Edit</string>
     </property>
     <addaction name="actionUnpackVideo"/>
+    <addaction name="separator"/>
+    <addaction name="actionOpenCurrentFrame"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -146,6 +148,11 @@
   <action name="actionUnpackVideo">
    <property name="text">
     <string>Unpack video</string>
+   </property>
+  </action>
+  <action name="actionOpenCurrentFrame">
+   <property name="text">
+    <string>Open current frame</string>
    </property>
   </action>
  </widget>

@@ -18,12 +18,19 @@ MainWindow::MainWindow(QWidget* parent) :
             this, &MainWindow::updatePlayerUI);
     connect(mPlayer, &Player::emptyImage,
             this, &MainWindow::resetPlayerUI);
+
+    mImageView = nullptr;
 }
 
 MainWindow::~MainWindow()
 {
     delete mPlayer;
     delete ui;
+}
+
+QImage MainWindow::getCurrentFrame()
+{
+    return ui->videoFrame->pixmap() ? ui->videoFrame->pixmap()->toImage() : QImage();
 }
 
 void MainWindow::updatePlayerUI(QImage image)

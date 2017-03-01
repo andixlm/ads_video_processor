@@ -2,9 +2,12 @@
 #define IMAGEVIEW_H
 
 #include <QWidget>
+#include <QImage>
 
 namespace Ui {
     class ImageView;
+
+    const int FRAME_SIZE = 249;
 }
 
 class ImageView : public QWidget
@@ -12,11 +15,12 @@ class ImageView : public QWidget
     Q_OBJECT
 
 public:
-    explicit ImageView(QWidget* parent = nullptr);
+    explicit ImageView(QWidget* parent = nullptr, QImage image = QImage());
     ~ImageView();
 
 private:
     Ui::ImageView* ui;
+    QImage mOriginalImage;
 };
 
 #endif // IMAGEVIEW_H

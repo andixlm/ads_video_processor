@@ -4,6 +4,7 @@
 #include <QImage>
 #include <QMainWindow>
 
+#include "imageview.h"
 #include "player.h"
 
 namespace Ui {
@@ -21,6 +22,9 @@ public:
 private:
     Ui::MainWindow* ui;
     Player* mPlayer;
+    ImageView* mImageView;
+
+    QImage getCurrentFrame();
 
 private slots:
     void on_actionOpen_triggered();
@@ -28,6 +32,7 @@ private slots:
     void on_actionExit_triggered();
 
     void on_actionUnpackVideo_triggered();
+    void on_actionOpenCurrentFrame_triggered();
 
     void on_playButton_clicked();
     void on_pauseButton_clicked();
