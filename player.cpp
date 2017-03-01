@@ -120,8 +120,10 @@ void Player::run()
     int delay = 1000 / mFrameRate;
 
     while(!mIsStopped) {
-        if (!mCapture.read(mFrame))
+        if (!mCapture.read(mFrame)) {
             mIsStopped = true;
+            emit emptyImage();
+        }
 
         if (mFrame.channels() == FRAME_CHANNEL_RGB) {
             cv::cvtColor(mFrame, mRGBFrame, CV_BGR2RGB);
@@ -135,6 +137,4 @@ void Player::run()
         emit processedImage(mImage);
         msleep(delay);
     }
-
-    emit emptyImage();
 }
