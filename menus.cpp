@@ -7,8 +7,10 @@ void MainWindow::on_actionOpen_triggered()
 {
     QString fileName = QFileDialog::getOpenFileName(this, tr("Open Video"), ".", tr("*.avi"));
 
-    if (!fileName.isEmpty())
+    if (!fileName.isEmpty()) {
+        mPlayer->closeVideo();
         mPlayer->loadVideo(fileName.toStdString());
+    }
 }
 
 void MainWindow::on_actionClose_triggered()
