@@ -29,7 +29,7 @@
        <enum>QFrame::Box</enum>
       </property>
       <property name="text">
-       <string>1</string>
+       <string/>
       </property>
      </widget>
     </item>
@@ -39,7 +39,7 @@
        <enum>QFrame::Box</enum>
       </property>
       <property name="text">
-       <string>2</string>
+       <string/>
       </property>
      </widget>
     </item>
@@ -49,7 +49,7 @@
        <enum>QFrame::Box</enum>
       </property>
       <property name="text">
-       <string>3</string>
+       <string/>
       </property>
      </widget>
     </item>
