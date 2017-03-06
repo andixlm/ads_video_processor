@@ -11,6 +11,8 @@ public:
     Polygon(QPoint topLeft = QPoint(), QPoint bottomRight = QPoint(),
             Rgb color = Rgb());
 
+    QPoint getTopLeft() { return mTopLeft; }
+    QPoint getBottomRight() { return mBottomRight; }
     Rgb getColor();
 
 private:
