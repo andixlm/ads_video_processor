@@ -42,6 +42,9 @@ void MainWindow::on_actionOpenCurrentFrame_triggered()
     if (getCurrentFrame().isNull())
         return;
 
+    if (!mPlayer->isStopped())
+        mPlayer->pause();
+
     if (mImageView)
         delete mImageView;
 
