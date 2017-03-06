@@ -8,6 +8,7 @@ SOURCES += main.cpp mainwindow.cpp \
     imagetree.cpp \
     imageview.cpp \
     menus.cpp \
+    modebox.cpp \
     player.cpp \
     polygon.cpp \
     rgb.cpp

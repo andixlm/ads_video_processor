@@ -10,6 +10,8 @@ ImageView::ImageView(QWidget* parent, QImage image) :
 {
     ui->setupUi(this);
 
+    processImage = &ImageView::buildGrid;
+
     if (mOriginalImage.width() > mOriginalImage.height())
         ui->originalImage->setPixmap(QPixmap::fromImage(mOriginalImage).scaledToWidth(Ui::FRAME_SIZE));
     else
@@ -19,4 +21,9 @@ ImageView::ImageView(QWidget* parent, QImage image) :
 ImageView::~ImageView()
 {
     delete ui;
+}
+
+void ImageView::buildGrid()
+{
+    return;
 }

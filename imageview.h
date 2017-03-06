@@ -20,7 +20,13 @@ public:
 
 private:
     Ui::ImageView* ui;
+
     QImage mOriginalImage;
+
+    void (ImageView::* processImage)();
+    void buildGrid();
+
+    void on_modeBox_currentIndexChanged(int value);
 };
 
 #endif // IMAGEVIEW_H
