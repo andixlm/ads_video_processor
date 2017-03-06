@@ -5,8 +5,3 @@ Polygon::Polygon(QPoint topLeft, QPoint bottomRight, Rgb color) :
 {
 
 }
-
-Rgb Polygon::getColor()
-{
-    return mColor;
-}

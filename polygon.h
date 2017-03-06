@@ -13,7 +13,7 @@ public:
 
     QPoint getTopLeft() { return mTopLeft; }
     QPoint getBottomRight() { return mBottomRight; }
-    Rgb getColor();
+    Rgb getColor() { return mColor; }
 
 private:
     QPoint mTopLeft;
