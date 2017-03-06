@@ -68,8 +68,7 @@ bool Player::loadVideo(std::string fileName)
     mCapture.open(fileName);
 
     if (mCapture.isOpened()) {
-        mFrameRate =
-                static_cast<int>(mCapture.get(CV_CAP_PROP_FPS));
+        mFrameRate = static_cast<int>(mCapture.get(CV_CAP_PROP_FPS));
         return true;
     }
 
