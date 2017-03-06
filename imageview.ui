@@ -58,10 +58,10 @@
   <widget class="QWidget" name="horizontalLayoutWidget_2">
    <property name="geometry">
     <rect>
-     <x>630</x>
+     <x>490</x>
      <y>300</y>
-     <width>160</width>
-     <height>24</height>
+     <width>301</width>
+     <height>25</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="modes">
@@ -73,6 +73,42 @@
        </property>
       </item>
      </widget>
+    </item>
+    <item>
+     <widget class="QSpinBox" name="sizeBox">
+      <property name="minimum">
+       <number>1</number>
+      </property>
+      <property name="maximum">
+       <number>8</number>
+      </property>
+      <property name="value">
+       <number>1</number>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QSpinBox" name="brightnessBox">
+      <property name="maximum">
+       <number>255</number>
+      </property>
+      <property name="value">
+       <number>13</number>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
     </item>
     <item>
      <widget class="QPushButton" name="runButton">
