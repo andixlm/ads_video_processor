@@ -5,13 +5,13 @@
 
 ImageView::ImageView(QWidget* parent, QImage image) :
     QWidget(parent),
-    ui(new Ui::ImageView),
-    mOriginalImage(image)
+    ui(new Ui::ImageView)
 {
     ui->setupUi(this);
 
     processImage = &ImageView::buildGrid;
 
+    mOriginalImage = image;
     if (mOriginalImage.width() > mOriginalImage.height())
         ui->originalImage->setPixmap(QPixmap::fromImage(mOriginalImage).scaledToWidth(Ui::FRAME_SIZE));
     else
