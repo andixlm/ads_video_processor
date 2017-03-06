@@ -43,7 +43,7 @@ void Player::play()
             mIsStopped = false;
         }
 
-        start(LowPriority);
+        start();
     }
 }
 
