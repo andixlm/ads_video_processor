@@ -1,6 +1,7 @@
 #ifndef POLYGON_H
 #define POLYGON_H
 
+#include <QImage>
 #include <QPoint>
 #include <QSize>
 
@@ -9,6 +10,7 @@
 class Polygon
 {
 public:
+    Polygon(QImage image, QPoint topLeft, QPoint bottomRight);
     Polygon(QPoint topLeft = QPoint(), QPoint bottomRight = QPoint(),
             Rgb color = Rgb());
 
