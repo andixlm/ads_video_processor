@@ -33,9 +33,9 @@ private:
     void on_openStagedImage_clicked();
     void on_openFinalImage_clicked();
 
+private slots:
     void on_modeBox_currentIndexChanged(int value);
 
-private slots:
     void on_sizeSpin_valueChanged(int value);
     void on_brightnessSpin_valueChanged(int value);
 };
