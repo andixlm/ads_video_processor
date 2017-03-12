@@ -39,7 +39,9 @@ void MainWindow::on_actionUnpackVideo_triggered()
 
 void MainWindow::on_actionOpenCurrentFrame_triggered()
 {
-    if (getCurrentFrame().isNull())
+    QImage currentFrame = getCurrentFrame();
+
+    if (currentFrame.isNull())
         return;
 
     if (!mPlayer->isStopped())
@@ -48,7 +50,7 @@ void MainWindow::on_actionOpenCurrentFrame_triggered()
     if (mImageWindow)
         delete mImageWindow;
 
-    mImageWindow = new ImageWindow(nullptr, getCurrentFrame());
+    mImageWindow = new ImageWindow(nullptr, currentFrame);
     mImageWindow->setFixedSize(mImageWindow->width(), mImageWindow->height());
     mImageWindow->show();
 }
