@@ -11,8 +11,8 @@ ImageWindow::ImageWindow(QWidget* parent, QImage image) :
 
     processImage = &ImageWindow::buildGrid;
 
-    mSizeThreshold = ui->sizeBox->value();
-    mBrightnessThreshold = ui->brightnessBox->value();
+    mSizeThreshold = ui->sizeSpin->value();
+    mBrightnessThreshold = ui->brightnessSpin->value();
 
     mOriginalImage = image;
     if (mOriginalImage.width() > mOriginalImage.height())

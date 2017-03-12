@@ -34,7 +34,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QSpinBox" name="sizeBox">
+      <widget class="QSpinBox" name="sizeSpin">
        <property name="minimum">
         <number>1</number>
        </property>
@@ -47,7 +47,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QSpinBox" name="brightnessBox">
+      <widget class="QSpinBox" name="brightnessSpin">
        <property name="maximum">
         <number>255</number>
        </property>
