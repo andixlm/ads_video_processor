@@ -11,7 +11,8 @@ SOURCES += main.cpp mainwindow.cpp \
     modebox.cpp \
     player.cpp \
     polygon.cpp \
-    rgb.cpp
+    rgb.cpp \
+    spins.cpp
 
 HEADERS += mainwindow.h \
     exception.h \

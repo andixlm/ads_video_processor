@@ -34,6 +34,10 @@ private:
     void on_openFinalImage_clicked();
 
     void on_modeBox_currentIndexChanged(int value);
+
+private slots:
+    void on_sizeSpin_valueChanged(int value);
+    void on_brightnessSpin_valueChanged(int value);
 };
 
 #endif // IMAGEWINDOW_H
