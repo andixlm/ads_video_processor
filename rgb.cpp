@@ -1,3 +1,5 @@
+#include <QColor>
+
 #include "exception.h"
 #include "rgb.h"
 
@@ -18,9 +20,11 @@ Rgb Rgb::getImageColor(QImage& image, QPoint topLeft, QPoint bottomRight)
 
     for (int x = topLeft.x(); x < bottomRight.x(); ++x)
       for (int y = topLeft.y(); y < bottomRight.y(); ++y) {
-        red += image.pixelColor(x, y).red();
-        green += image.pixelColor(x, y).green();
-        blue += image.pixelColor(x, y).blue();
+        QColor color = image.pixelColor(x, y);
+
+        red += color.red();
+        green += color.green();
+        blue += color.blue();
 
         ++area;
       }
