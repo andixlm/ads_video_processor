@@ -9,7 +9,7 @@ Rgb::Rgb(unsigned red, unsigned green, unsigned blue)
     mBrightness = 0.299 * mRed + 0.587 * mGreen + 0.114 * mBlue;
 }
 
-Rgb Rgb::getImageColor(QImage image, QPoint topLeft, QPoint bottomRight)
+Rgb Rgb::getImageColor(QImage& image, QPoint topLeft, QPoint bottomRight)
 {
     int area = 0;
     unsigned red = 0;

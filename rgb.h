@@ -15,7 +15,7 @@ public:
 
     int getBrightness() { return static_cast<int>(mBrightness); }
 
-    static Rgb getImageColor(QImage image, QPoint topLeft, QPoint bottomRight);
+    static Rgb getImageColor(QImage& image, QPoint topLeft, QPoint bottomRight);
 
 private:
     unsigned mRed;
