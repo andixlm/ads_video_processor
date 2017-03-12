@@ -2,6 +2,7 @@
 #define POLYGON_H
 
 #include <QPoint>
+#include <QSize>
 
 #include "rgb.h"
 
@@ -13,6 +14,11 @@ public:
 
     QPoint getTopLeft() { return mTopLeft; }
     QPoint getBottomRight() { return mBottomRight; }
+
+    int getWidth() { return getBottomRight().x() - getTopLeft().x(); }
+    int getHeight() { return getBottomRight().y() - getTopLeft().y(); }
+    QSize getSize() { return QSize(getWidth(), getHeight()); }
+
     Rgb getColor() { return mColor; }
 
 private:
