@@ -25,9 +25,13 @@ private:
     int mBrightnessThreshold;
 
     QImage mOriginalImage;
+    QImage mStagedImage;
+    QImage mFinalImage;
 
     void (ImageWindow::* processImage)();
     void buildGrid();
+
+    QImage getBlankImage(QSize size);
 
     void on_openOriginalImage_clicked();
     void on_openStagedImage_clicked();

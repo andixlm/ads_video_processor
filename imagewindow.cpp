@@ -15,6 +15,9 @@ ImageWindow::ImageWindow(QWidget* parent, QImage image) :
     mBrightnessThreshold = ui->brightnessSpin->value();
 
     mOriginalImage = image;
+    mStagedImage = getBlankImage(mOriginalImage.size());
+    mFinalImage = getBlankImage(mOriginalImage.size());
+
     if (mOriginalImage.width() > mOriginalImage.height())
         ui->originalImage->setPixmap(QPixmap::fromImage(mOriginalImage).scaledToWidth(Ui::FRAME_SIZE));
     else
@@ -29,4 +32,12 @@ ImageWindow::~ImageWindow()
 void ImageWindow::buildGrid()
 {
     return;
+}
+
+QImage ImageWindow::getBlankImage(QSize size)
+{
+    QImage image = QImage(QPixmap(size).toImage());
+    image.fill(Qt::white);
+
+    return image;
 }
