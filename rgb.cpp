@@ -3,6 +3,14 @@
 #include "exception.h"
 #include "rgb.h"
 
+Rgb::Rgb(unsigned red, unsigned green, unsigned blue)
+{
+    if (red > 255 || green > 255 || blue > 255)
+        throw Exception::ValueError();
+
+    mBrightness = 0.299 * mRed + 0.587 * mGreen + 0.114 * mBlue;
+}
+
 Rgb::Rgb(QImage &image, QPoint point)
 {
     QColor color = image.pixelColor(point);
@@ -14,15 +22,7 @@ Rgb::Rgb(QImage &image, QPoint point)
     mBrightness = 0.299 * mRed + 0.587 * mGreen + 0.114 * mBlue;
 }
 
-Rgb::Rgb(unsigned red, unsigned green, unsigned blue)
-{
-    if (red > 255 || green > 255 || blue > 255)
-        throw Exception::ValueError();
-
-    mBrightness = 0.299 * mRed + 0.587 * mGreen + 0.114 * mBlue;
-}
-
-Rgb Rgb::getImageColor(QImage& image, QPoint topLeft, QPoint bottomRight)
+Rgb::Rgb(QImage& image, QPoint topLeft, QPoint bottomRight)
 {
     int area = 0;
     unsigned red = 0;
@@ -40,5 +40,7 @@ Rgb Rgb::getImageColor(QImage& image, QPoint topLeft, QPoint bottomRight)
         ++area;
       }
 
-    return Rgb(red / area, green / area, blue / area);
+    mRed = red / area;
+    mGreen = green / area;
+    mBlue = blue / area;
 }
