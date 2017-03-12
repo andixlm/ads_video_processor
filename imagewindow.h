@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <QImage>
 
+#include "imagetree.h"
+
 namespace Ui {
     class ImageWindow;
 
@@ -27,6 +29,8 @@ private:
     QImage mOriginalImage;
     QImage mStagedImage;
     QImage mFinalImage;
+
+    ImageTree mImageTree;
 
     void (ImageWindow::* processImage)();
     void buildGrid();
