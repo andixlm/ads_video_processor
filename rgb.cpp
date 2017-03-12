@@ -8,6 +8,10 @@ Rgb::Rgb(unsigned red, unsigned green, unsigned blue)
     if (red > 255 || green > 255 || blue > 255)
         throw Exception::ValueError();
 
+    mRed = red;
+    mGreen = green;
+    mBlue = blue;
+
     mBrightness = calculateBrightness(mRed, mGreen, mBlue);
 }
 
