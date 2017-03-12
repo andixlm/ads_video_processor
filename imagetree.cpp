@@ -48,10 +48,24 @@ void ImageTree::_clear(Node* node)
     delete node;
 }
 
-// TODO: Gotta implement.
 bool ImageTree::isLeftChild(Polygon& newPolygon, Polygon& currentPolygon)
 {
-    return true;
+    int width = currentPolygon.getBottomRight().x() - currentPolygon.getTopLeft().x();
+    int height = currentPolygon.getBottomRight().y() - currentPolygon.getTopLeft().y();
+
+    int middleWidth = (currentPolygon.getBottomRight().x() + currentPolygon.getTopLeft().x()) / 2;
+    int middleHeight = (currentPolygon.getBottomRight().y() + currentPolygon.getTopLeft().y()) / 2;
+
+    if (width > height)
+      if (newPolygon.getTopLeft().x() < middleWidth)
+        return true;
+      else
+        return false;
+    else
+      if (newPolygon.getTopLeft().y() < middleHeight)
+        return true;
+      else
+        return false;
 }
 
 Node* ImageTree::getHead()
