@@ -13,13 +13,16 @@ public:
             Rgb color = Rgb());
 
     QPoint getTopLeft() { return mTopLeft; }
+    void setTopLeft(QPoint topLeft) { mTopLeft = topLeft; }
     QPoint getBottomRight() { return mBottomRight; }
+    void setBottomRight(QPoint bottomRight) { mBottomRight = bottomRight; }
 
     int getWidth() { return getBottomRight().x() - getTopLeft().x(); }
     int getHeight() { return getBottomRight().y() - getTopLeft().y(); }
     QSize getSize() { return QSize(getWidth(), getHeight()); }
 
     Rgb getColor() { return mColor; }
+    void setColor(Rgb color) { mColor = color; }
 
 private:
     QPoint mTopLeft;
