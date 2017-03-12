@@ -10,9 +10,8 @@
 class Polygon
 {
 public:
+    Polygon(QPoint topLeft, QPoint bottomRight, Rgb color);
     Polygon(QImage& image, QPoint topLeft, QPoint bottomRight);
-    Polygon(QPoint topLeft = QPoint(), QPoint bottomRight = QPoint(),
-            Rgb color = Rgb());
 
     QPoint getTopLeft() { return mTopLeft; }
     void setTopLeft(QPoint topLeft) { mTopLeft = topLeft; }

@@ -10,7 +10,7 @@ class Node
     friend ImageTree;
 
 public:
-    Node(Polygon polygon = Polygon(), Node* parent = nullptr,
+    Node(Polygon polygon, Node* parent = nullptr,
          Node* leftChild = nullptr, Node* rightChild = nullptr);
 
 private:
@@ -35,7 +35,7 @@ public:
 private:
     Node* mHead;
 
-    Node* _insert(Polygon polygon = Polygon(), Node* parent = nullptr, Node* node = nullptr);
+    Node* _insert(Polygon polygon, Node* parent = nullptr, Node* node = nullptr);
     void _clear(Node* node);
 
     bool isLeftChild(Polygon& newPolygon, Polygon& currentPolygon);
