@@ -34,6 +34,7 @@ private:
 
     void (ImageWindow::* processImage)();
     void buildGrid();
+    void _buildGrid(Polygon polygon);
 
     QImage getBlankImage(QSize size);
 

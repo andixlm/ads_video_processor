@@ -31,7 +31,40 @@ ImageWindow::~ImageWindow()
 
 void ImageWindow::buildGrid()
 {
-    return;
+    _buildGrid(Polygon(mOriginalImage, QPoint(), QPoint(mOriginalImage.width() - 1, mOriginalImage.height() - 1)));
+}
+
+void ImageWindow::_buildGrid(Polygon polygon)
+{
+    mImageTree.insert(polygon);
+
+    if (Polygon::isSizeThreshold(polygon, mSizeThreshold) &&
+            Polygon::isBrightnessThreshold(mOriginalImage, polygon, mBrightnessThreshold)) {
+        int width = polygon.getWidth();
+        int height = polygon.getHeight();
+        int middleWidth = polygon.getMiddleWidth();
+        int middleHeight = polygon.getMiddleHeight();
+
+        if (width > height) {
+            // Divide with vertical line.
+            _buildGrid(Polygon(mOriginalImage,
+                               polygon.getTopLeft(),
+                               QPoint(middleWidth, polygon.getBottomRight().y())));
+
+            _buildGrid(Polygon(mOriginalImage,
+                               QPoint(middleHeight + 1, polygon.getTopLeft().y()),
+                               polygon.getBottomRight()));
+        } else {
+            // Devide with horizontal line.
+            _buildGrid(Polygon(mOriginalImage,
+                               polygon.getTopLeft(),
+                               QPoint(polygon.getBottomRight().x(), middleHeight)));
+
+            _buildGrid(Polygon(mOriginalImage,
+                               QPoint(polygon.getTopLeft().x(), middleHeight + 1),
+                               polygon.getBottomRight()));
+        }
+    }
 }
 
 QImage ImageWindow::getBlankImage(QSize size)
