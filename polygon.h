@@ -20,6 +20,8 @@ public:
 
     int getWidth() { return getBottomRight().x() - getTopLeft().x(); }
     int getHeight() { return getBottomRight().y() - getTopLeft().y(); }
+    int getMiddleWidth() { return (getBottomRight().x() + getTopLeft().x()) / 2; }
+    int getMiddleHeight() { return (getBottomRight().y() + getTopLeft().y()) / 2; }
     QSize getSize() { return QSize(getWidth(), getHeight()); }
 
     Rgb getColor() { return mColor; }
