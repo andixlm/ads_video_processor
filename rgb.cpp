@@ -8,7 +8,7 @@ Rgb::Rgb(unsigned red, unsigned green, unsigned blue)
     if (red > 255 || green > 255 || blue > 255)
         throw Exception::ValueError();
 
-    mBrightness = 0.299 * mRed + 0.587 * mGreen + 0.114 * mBlue;
+    mBrightness = calculateBrightness(mRed, mGreen, mBlue);
 }
 
 Rgb::Rgb(QImage &image, QPoint point)
@@ -19,7 +19,7 @@ Rgb::Rgb(QImage &image, QPoint point)
     mGreen = color.green();
     mBlue = color.blue();
 
-    mBrightness = 0.299 * mRed + 0.587 * mGreen + 0.114 * mBlue;
+    mBrightness = calculateBrightness(mRed, mGreen, mBlue);
 }
 
 Rgb::Rgb(QImage& image, QPoint topLeft, QPoint bottomRight)
@@ -43,4 +43,11 @@ Rgb::Rgb(QImage& image, QPoint topLeft, QPoint bottomRight)
     mRed = red / area;
     mGreen = green / area;
     mBlue = blue / area;
+
+    mBrightness = calculateBrightness(mRed, mGreen, mBlue);
+}
+
+double Rgb::calculateBrightness(unsigned red, unsigned green, unsigned blue)
+{
+    return 0.299 * red + 0.587 * green + 0.114 * blue;
 }
