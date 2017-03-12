@@ -27,6 +27,9 @@ public:
     Rgb getColor() { return mColor; }
     void setColor(Rgb color) { mColor = color; }
 
+    static bool isSizeThreshold(Polygon polygon, int threshold);
+    static bool isBrightnessThreshold(QImage& image, Polygon polygon, int threshold);
+
 private:
     QPoint mTopLeft;
     QPoint mBottomRight;

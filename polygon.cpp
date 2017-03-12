@@ -13,3 +13,31 @@ Polygon::Polygon(QPoint topLeft, QPoint bottomRight, Rgb color)
     mBottomRight = bottomRight;
     mColor = color;
 }
+
+bool Polygon::isSizeThreshold(Polygon polygon, int threshold)
+{
+    if (polygon.getWidth() <= threshold && polygon.getHeight() <= threshold)
+        return true;
+
+    return false;
+}
+
+bool Polygon::isBrightnessThreshold(QImage& image, Polygon polygon, int threshold)
+{
+    int minimum = 255, maximum = 0;
+    QPoint topLeft = polygon.getTopLeft();
+    QPoint bottomRight = polygon.getBottomRight();
+
+    for (int x = topLeft.x(); x <= bottomRight.x(); ++x)
+      for (int y = topLeft.y(); y <= bottomRight.y(); ++y) {
+        int currentBrightness = Rgb(image, QPoint(x, y)).getBrightness();
+
+        minimum = (minimum > currentBrightness) ? currentBrightness : minimum;
+        maximum = (maximum < currentBrightness) ? currentBrightness : maximum;
+      }
+
+    if (maximum - minimum > threshold)
+      return true;
+
+    return false;
+}
