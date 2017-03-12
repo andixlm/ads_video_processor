@@ -26,7 +26,7 @@ private:
     unsigned mBlue;
 
     double mBrightness;
-    double calculateBrightness(unsigned red, unsigned green, unsigned blue);
+    static double calculateBrightness(unsigned red, unsigned green, unsigned blue);
 };
 
 #endif // RGB_H
