@@ -7,6 +7,7 @@
 class Rgb
 {
 public:
+    Rgb(QImage& image, QPoint point);
     Rgb(unsigned red = 0, unsigned green = 0, unsigned blue = 0);
 
     unsigned getRed() { return mRed; }

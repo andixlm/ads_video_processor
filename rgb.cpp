@@ -3,6 +3,17 @@
 #include "exception.h"
 #include "rgb.h"
 
+Rgb::Rgb(QImage &image, QPoint point)
+{
+    QColor color = image.pixelColor(point);
+
+    mRed = color.red();
+    mGreen = color.green();
+    mBlue = color.blue();
+
+    mBrightness = 0.299 * mRed + 0.587 * mGreen + 0.114 * mBlue;
+}
+
 Rgb::Rgb(unsigned red, unsigned green, unsigned blue)
 {
     if (red > 255 || green > 255 || blue > 255)
