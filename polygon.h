@@ -10,7 +10,7 @@
 class Polygon
 {
 public:
-    Polygon(QImage image, QPoint topLeft, QPoint bottomRight);
+    Polygon(QImage& image, QPoint topLeft, QPoint bottomRight);
     Polygon(QPoint topLeft = QPoint(), QPoint bottomRight = QPoint(),
             Rgb color = Rgb());
 

@@ -1,6 +1,6 @@
 #include "polygon.h"
 
-Polygon::Polygon(QImage image, QPoint topLeft, QPoint bottomRight)
+Polygon::Polygon(QImage& image, QPoint topLeft, QPoint bottomRight)
 {
     mTopLeft = topLeft;
     mBottomRight = bottomRight;
