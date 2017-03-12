@@ -7,26 +7,27 @@
 class Rgb
 {
 public:
-    Rgb(unsigned red = 0, unsigned green = 0, unsigned blue = 0);
+    Rgb(int red = 0, int green = 0, int blue = 0);
     Rgb(QImage& image, QPoint point);
     Rgb(QImage& image, QPoint topLeft, QPoint bottomRight);
 
-    unsigned getRed() { return mRed; }
-    void setRed(unsigned red) { mRed = red; mBrightness = calculateBrightness(mRed, mGreen, mBlue); }
-    unsigned getGreen() { return mGreen; }
-    void setGreen(unsigned green) { mGreen = green; mBrightness = calculateBrightness(mRed, mGreen, mBlue); }
-    unsigned getBlue() { return mBlue; }
-    void setBlue(unsigned blue) { mBlue = blue; mBrightness = calculateBrightness(mRed, mGreen, mBlue); }
+    int getRed() { return mRed; }
+    void setRed(int red) { mRed = red; mBrightness = calculateBrightness(mRed, mGreen, mBlue); }
+    int getGreen() { return mGreen; }
+    void setGreen(int green) { mGreen = green; mBrightness = calculateBrightness(mRed, mGreen, mBlue); }
+    int getBlue() { return mBlue; }
+    void setBlue(int blue) { mBlue = blue; mBrightness = calculateBrightness(mRed, mGreen, mBlue); }
 
     int getBrightness() { return static_cast<int>(mBrightness); }
+    static double calculateBrightness(int red, int green, int blue);
+    static double calculateBrightness(Rgb rgb);
 
 private:
-    unsigned mRed;
-    unsigned mGreen;
-    unsigned mBlue;
+    int mRed;
+    int mGreen;
+    int mBlue;
 
     double mBrightness;
-    static double calculateBrightness(unsigned red, unsigned green, unsigned blue);
 };
 
 #endif // RGB_H

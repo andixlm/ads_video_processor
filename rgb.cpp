@@ -3,9 +3,9 @@
 #include "exception.h"
 #include "rgb.h"
 
-Rgb::Rgb(unsigned red, unsigned green, unsigned blue)
+Rgb::Rgb(int red, int green, int blue)
 {
-    if (red > 255 || green > 255 || blue > 255)
+    if (red < 0 || red > 255 || green < 0 || green > 255 || blue < 0 || blue > 255)
         throw Exception::ValueError();
 
     mRed = red;
@@ -29,12 +29,10 @@ Rgb::Rgb(QImage &image, QPoint point)
 Rgb::Rgb(QImage& image, QPoint topLeft, QPoint bottomRight)
 {
     int area = 0;
-    unsigned red = 0;
-    unsigned green = 0;
-    unsigned blue = 0;
+    int red = 0, green = 0, blue = 0;
 
-    for (int x = topLeft.x(); x < bottomRight.x(); ++x)
-      for (int y = topLeft.y(); y < bottomRight.y(); ++y) {
+    for (int x = topLeft.x(); x <= bottomRight.x(); ++x)
+      for (int y = topLeft.y(); y <= bottomRight.y(); ++y) {
         QColor color = image.pixelColor(x, y);
 
         red += color.red();
@@ -51,7 +49,15 @@ Rgb::Rgb(QImage& image, QPoint topLeft, QPoint bottomRight)
     mBrightness = calculateBrightness(mRed, mGreen, mBlue);
 }
 
-double Rgb::calculateBrightness(unsigned red, unsigned green, unsigned blue)
+double Rgb::calculateBrightness(int red, int green, int blue)
 {
+    if (red < 0 || red > 255 || green < 0 || green > 255 || blue < 0 || blue > 255)
+        throw Exception::ValueError();
+
     return 0.299 * red + 0.587 * green + 0.114 * blue;
+}
+
+double Rgb::calculateBrightness(Rgb rgb)
+{
+    return calculateBrightness(rgb.getRed(), rgb.getGreen(), rgb.getBlue());
 }
