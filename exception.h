@@ -3,6 +3,7 @@
 
 namespace Exception {
     class OutOfMemory {};
+    class ValueError {};
 }
 
 #endif // EXCEPTION_H
