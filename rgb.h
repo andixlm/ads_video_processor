@@ -1,6 +1,9 @@
 #ifndef RGB_H
 #define RGB_H
 
+#include <QImage>
+#include <QPoint>
+
 class Rgb
 {
 public:
@@ -11,6 +14,8 @@ public:
     unsigned getBlue() { return mBlue; }
 
     int getBrightness() { return static_cast<int>(mBrightness); }
+
+    static Rgb getImageColor(QImage image, QPoint topLeft, QPoint bottomRight);
 
 private:
     unsigned mRed;
