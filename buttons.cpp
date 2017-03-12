@@ -16,3 +16,18 @@ void MainWindow::on_stopButton_clicked()
 {
     mPlayer->stop();
 }
+
+void ImageWindow::on_openOriginalImage_clicked()
+{
+    return;
+}
+
+void ImageWindow::on_openStagedImage_clicked()
+{
+    return;
+}
+
+void ImageWindow::on_openFinalImage_clicked()
+{
+    return;
+}

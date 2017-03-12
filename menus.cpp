@@ -45,10 +45,10 @@ void MainWindow::on_actionOpenCurrentFrame_triggered()
     if (!mPlayer->isStopped())
         mPlayer->pause();
 
-    if (mImageView)
-        delete mImageView;
+    if (mImageWindow)
+        delete mImageWindow;
 
-    mImageView = new ImageView(nullptr, getCurrentFrame());
-    mImageView->setFixedSize(mImageView->width(), mImageView->height());
-    mImageView->show();
+    mImageWindow = new ImageWindow(nullptr, getCurrentFrame());
+    mImageWindow->setFixedSize(mImageWindow->width(), mImageWindow->height());
+    mImageWindow->show();
 }

@@ -1,15 +1,15 @@
 #include <QPixmap>
 
-#include "imageview.h"
-#include "ui_imageview.h"
+#include "imagewindow.h"
+#include "ui_imagewindow.h"
 
-ImageView::ImageView(QWidget* parent, QImage image) :
-    QWidget(parent),
-    ui(new Ui::ImageView)
+ImageWindow::ImageWindow(QWidget* parent, QImage image) :
+    QMainWindow(parent),
+    ui(new Ui::ImageWindow)
 {
     ui->setupUi(this);
 
-    processImage = &ImageView::buildGrid;
+    processImage = &ImageWindow::buildGrid;
 
     mOriginalImage = image;
     if (mOriginalImage.width() > mOriginalImage.height())
@@ -18,12 +18,12 @@ ImageView::ImageView(QWidget* parent, QImage image) :
         ui->originalImage->setPixmap(QPixmap::fromImage(mOriginalImage).scaledToHeight(Ui::FRAME_SIZE));
 }
 
-ImageView::~ImageView()
+ImageWindow::~ImageWindow()
 {
     delete ui;
 }
 
-void ImageView::buildGrid()
+void ImageWindow::buildGrid()
 {
     return;
 }

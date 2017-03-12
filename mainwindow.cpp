@@ -19,11 +19,12 @@ MainWindow::MainWindow(QWidget* parent) :
     connect(mPlayer, &Player::emptyImage,
             this, &MainWindow::resetPlayerUI);
 
-    mImageView = nullptr;
+    mImageWindow = new ImageWindow();
 }
 
 MainWindow::~MainWindow()
 {
+    delete mImageWindow;
     delete mPlayer;
     delete ui;
 }

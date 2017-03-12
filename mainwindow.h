@@ -4,7 +4,7 @@
 #include <QImage>
 #include <QMainWindow>
 
-#include "imageview.h"
+#include "imagewindow.h"
 #include "player.h"
 
 namespace Ui {
@@ -22,7 +22,7 @@ public:
 private:
     Ui::MainWindow* ui;
     Player* mPlayer;
-    ImageView* mImageView;
+    ImageWindow* mImageWindow;
 
     QImage getCurrentFrame();
 

@@ -6,7 +6,7 @@ TEMPLATE = app
 SOURCES += main.cpp mainwindow.cpp \
     buttons.cpp \
     imagetree.cpp \
-    imageview.cpp \
+    imagewindow.cpp \
     menus.cpp \
     modebox.cpp \
     player.cpp \
@@ -16,13 +16,13 @@ SOURCES += main.cpp mainwindow.cpp \
 HEADERS += mainwindow.h \
     exception.h \
     imagetree.h \
-    imageview.h \
+    imagewindow.h \
     player.h \
     polygon.h \
     rgb.h
 
 FORMS += mainwindow.ui \
-    imageview.ui
+    imagewindow.ui
 
 # OpenCV support
 INCLUDEPATH += $$PWD\\opencv\\include

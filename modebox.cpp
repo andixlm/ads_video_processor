@@ -1,10 +1,10 @@
-#include <imageview.h>
+#include <imagewindow.h>
 
 namespace Mode {
     enum { buildGrid };
 }
 
-void ImageView::on_modeBox_currentIndexChanged(int value)
+void ImageWindow::on_modeBox_currentIndexChanged(int value)
 {
     switch (value) {
     case Mode::buildGrid:
