@@ -12,11 +12,11 @@ public:
     Rgb(QImage& image, QPoint topLeft, QPoint bottomRight);
 
     unsigned getRed() { return mRed; }
-    void setRed(unsigned red) { mRed = red; }
+    void setRed(unsigned red) { mRed = red; mBrightness = calculateBrightness(mRed, mGreen, mBlue); }
     unsigned getGreen() { return mGreen; }
-    void setGreen(unsigned green) { mGreen = green; }
+    void setGreen(unsigned green) { mGreen = green; mBrightness = calculateBrightness(mRed, mGreen, mBlue); }
     unsigned getBlue() { return mBlue; }
-    void setBlue(unsigned blue) { mBlue = blue; }
+    void setBlue(unsigned blue) { mBlue = blue; mBrightness = calculateBrightness(mRed, mGreen, mBlue); }
 
     int getBrightness() { return static_cast<int>(mBrightness); }
 
