@@ -11,6 +11,9 @@ ImageWindow::ImageWindow(QWidget* parent, QImage image) :
 
     processImage = &ImageWindow::buildGrid;
 
+    mSizeThreshold = ui->sizeBox->value();
+    mBrightnessThreshold = ui->brightnessBox->value();
+
     mOriginalImage = image;
     if (mOriginalImage.width() > mOriginalImage.height())
         ui->originalImage->setPixmap(QPixmap::fromImage(mOriginalImage).scaledToWidth(Ui::FRAME_SIZE));

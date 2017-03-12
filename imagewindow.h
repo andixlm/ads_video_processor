@@ -21,6 +21,9 @@ public:
 private:
     Ui::ImageWindow *ui;
 
+    int mSizeThreshold;
+    int mBrightnessThreshold;
+
     QImage mOriginalImage;
 
     void (ImageWindow::* processImage)();
