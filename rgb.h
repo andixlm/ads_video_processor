@@ -20,7 +20,6 @@ public:
 
     int getBrightness() { return static_cast<int>(mBrightness); }
     static double calculateBrightness(int red, int green, int blue);
-    static double calculateBrightness(Rgb rgb);
 
 private:
     int mRed;
