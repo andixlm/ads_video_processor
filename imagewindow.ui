@@ -36,13 +36,13 @@
      <item>
       <widget class="QSpinBox" name="sizeSpin">
        <property name="minimum">
-        <number>2</number>
+        <number>1</number>
        </property>
        <property name="maximum">
         <number>8</number>
        </property>
        <property name="value">
-        <number>2</number>
+        <number>1</number>
        </property>
       </widget>
      </item>
