@@ -48,6 +48,14 @@ void ImageTree::_clear(Node* node)
     delete node;
 }
 
+bool ImageTree::isLeaf(Node*& node)
+{
+    if (!node->mLeftChild && !node->mRightChild)
+        return true;
+
+    return false;
+}
+
 bool ImageTree::isLeftChild(Polygon& newPolygon, Polygon& currentPolygon)
 {
     if (currentPolygon.getWidth() > currentPolygon.getHeight())

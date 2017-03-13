@@ -38,6 +38,7 @@ private:
     Node* _insert(Polygon polygon, Node* parent = nullptr, Node* node = nullptr);
     void _clear(Node* node);
 
+    bool isLeaf(Node*& node);
     bool isLeftChild(Polygon& newPolygon, Polygon& currentPolygon);
 };
 
