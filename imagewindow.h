@@ -43,6 +43,8 @@ private:
     void on_openFinalImage_clicked();
 
 private slots:
+    void on_runButton_clicked();
+
     void on_modeBox_currentIndexChanged(int value);
 
     void on_sizeSpin_valueChanged(int value);

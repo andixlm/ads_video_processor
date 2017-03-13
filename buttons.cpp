@@ -31,3 +31,8 @@ void ImageWindow::on_openFinalImage_clicked()
 {
     return;
 }
+
+void ImageWindow::on_runButton_clicked()
+{
+    (this->*processImage)();
+}
