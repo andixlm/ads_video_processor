@@ -52,7 +52,7 @@ void ImageWindow::_buildGrid(Polygon polygon)
         int middleWidth = polygon.getMiddleWidth();
         int middleHeight = polygon.getMiddleHeight();
 
-        if (width > height) {
+        if (width >= height) {
             // Divide with vertical line.
             _buildGrid(Polygon(mOriginalImage,
                                polygon.getTopLeft(),
