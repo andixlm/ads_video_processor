@@ -18,13 +18,13 @@ MainWindow::MainWindow(QWidget* parent) :
             this, &MainWindow::updatePlayerUI);
     connect(mPlayer, &Player::emptyImage,
             this, &MainWindow::resetPlayerUI);
-
-    mImageWindow = new ImageWindow();
 }
 
 MainWindow::~MainWindow()
 {
-    delete mImageWindow;
+    if (mImageWindow)
+        delete mImageWindow;
+
     delete mPlayer;
     delete ui;
 }
