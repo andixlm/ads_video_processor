@@ -16,7 +16,7 @@ Polygon::Polygon(QPoint topLeft, QPoint bottomRight, Rgb color)
 
 bool Polygon::isSizeThreshold(Polygon polygon, int threshold)
 {
-    if (polygon.getWidth() <= threshold && polygon.getHeight() <= threshold)
+    if (polygon.getWidth() < threshold && polygon.getHeight() < threshold)
         return true;
 
     return false;
