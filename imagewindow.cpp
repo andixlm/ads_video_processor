@@ -38,7 +38,7 @@ void ImageWindow::_buildGrid(Polygon polygon)
 {
     mImageTree.insert(polygon);
 
-    if (Polygon::isSizeThreshold(polygon, mSizeThreshold) &&
+    if (!Polygon::isSizeThreshold(polygon, mSizeThreshold) &&
             Polygon::isBrightnessThreshold(mOriginalImage, polygon, mBrightnessThreshold)) {
         int width = polygon.getWidth();
         int height = polygon.getHeight();
