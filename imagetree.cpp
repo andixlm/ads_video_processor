@@ -1,5 +1,6 @@
 #include "exception.h"
 #include "imagetree.h"
+#include "tools.h"
 
 Node::Node(Polygon polygon, Node* parent, Node* leftChild, Node* rightChild) :
     mPolygon(polygon), mParent(parent), mLeftChild(leftChild), mRightChild(rightChild)
@@ -46,6 +47,26 @@ void ImageTree::_clear(Node* node)
     _clear(node->mRightChild);
 
     delete node;
+}
+
+QImage ImageTree::toImageGrid()
+{
+    QImage image = Tools::getBlankImage(mHead->mPolygon.getSize());
+    _toImageGrid(image, mHead);
+
+    return image;
+}
+
+void ImageTree::_toImageGrid(QImage& image, Node*& node)
+{
+    if (!node)
+        return;
+
+    _toImageGrid(image, node->mLeftChild);
+    _toImageGrid(image, node->mRightChild);
+
+    if (isLeaf(node))
+        Tools::drawPolygon(image, node->mPolygon);
 }
 
 bool ImageTree::isLeaf(Node*& node)

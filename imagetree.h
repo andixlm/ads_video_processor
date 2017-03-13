@@ -30,6 +30,8 @@ public:
     void insert(Polygon polygon) { mHead = _insert(polygon, nullptr, mHead); }
     void clear() { _clear(mHead); mHead = nullptr; }
 
+    QImage toImageGrid();
+
     Node* getHead();
 
 private:
@@ -37,6 +39,8 @@ private:
 
     Node* _insert(Polygon polygon, Node* parent = nullptr, Node* node = nullptr);
     void _clear(Node* node);
+
+    void _toImageGrid(QImage& image, Node*& node);
 
     bool isLeaf(Node*& node);
     bool isLeftChild(Polygon& newPolygon, Polygon& currentPolygon);
