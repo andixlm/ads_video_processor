@@ -32,6 +32,13 @@ ImageWindow::~ImageWindow()
 void ImageWindow::buildGrid()
 {
     _buildGrid(Polygon(mOriginalImage, QPoint(), QPoint(mOriginalImage.width() - 1, mOriginalImage.height() - 1)));
+
+    mStagedImage = mImageTree.toImageGrid();
+
+    if (mStagedImage.width() > mStagedImage.height())
+        ui->stagedImage->setPixmap(QPixmap::fromImage(mStagedImage).scaledToWidth(Ui::FRAME_SIZE));
+    else
+        ui->stagedImage->setPixmap(QPixmap::fromImage(mStagedImage).scaledToHeight(Ui::FRAME_SIZE));
 }
 
 void ImageWindow::_buildGrid(Polygon polygon)
