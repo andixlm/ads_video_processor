@@ -22,12 +22,12 @@ bool Polygon::isSizeThreshold(Polygon polygon, int threshold)
     return false;
 }
 
-bool Polygon::isBrightnessThreshold(QImage& image, Polygon polygon, int threshold)
+bool Polygon::isBrightnessThreshold(QImage& image, Polygon& polygon, int threshold)
 {
-    int minimum = 255, maximum = 0;
     QPoint topLeft = polygon.getTopLeft();
     QPoint bottomRight = polygon.getBottomRight();
 
+    int minimum = 255, maximum = 0;
     for (int x = topLeft.x(); x <= bottomRight.x(); ++x)
       for (int y = topLeft.y(); y <= bottomRight.y(); ++y) {
         int currentBrightness = Rgb(image, QPoint(x, y)).getBrightness();

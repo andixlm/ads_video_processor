@@ -2,16 +2,17 @@
 #include "imagetree.h"
 #include "tools.h"
 
-Node::Node(Polygon polygon, Node* parent, Node* leftChild, Node* rightChild) :
-    mPolygon(polygon), mParent(parent), mLeftChild(leftChild), mRightChild(rightChild)
+Node::Node(Polygon polygon, Node* parent, Node* leftChild, Node* rightChild)
 {
-
+    mPolygon = polygon;
+    mParent = parent;
+    mLeftChild = leftChild;
+    mRightChild = rightChild;
 }
 
-ImageTree::ImageTree(Node* head) :
-    mHead(head)
+ImageTree::ImageTree(Node* head)
 {
-
+    mHead = head;
 }
 
 ImageTree::~ImageTree()
@@ -19,11 +20,35 @@ ImageTree::~ImageTree()
     _clear(mHead);
 }
 
+Node* ImageTree::getHead()
+{
+    return mHead;
+}
+
+QImage ImageTree::toImageGrid()
+{
+    QImage image = Tools::getBlankImage(mHead->mPolygon.getSize());
+    _toImageGrid(image, mHead);
+
+    return image;
+}
+
+void ImageTree::_toImageGrid(QImage& image, Node* node)
+{
+    if (!node)
+        return;
+
+    _toImageGrid(image, node->mLeftChild);
+    _toImageGrid(image, node->mRightChild);
+
+    if (isLeaf(node))
+        Tools::drawPolygon(image, node->mPolygon);
+}
+
 Node* ImageTree::_insert(Polygon polygon, Node* parent, Node* node)
 {
     if (!node) {
         Node* temp = new Node(polygon, parent);
-
         if (!temp)
             throw Exception::OutOfMemory();
 
@@ -49,27 +74,7 @@ void ImageTree::_clear(Node* node)
     delete node;
 }
 
-QImage ImageTree::toImageGrid()
-{
-    QImage image = Tools::getBlankImage(mHead->mPolygon.getSize());
-    _toImageGrid(image, mHead);
-
-    return image;
-}
-
-void ImageTree::_toImageGrid(QImage& image, Node*& node)
-{
-    if (!node)
-        return;
-
-    _toImageGrid(image, node->mLeftChild);
-    _toImageGrid(image, node->mRightChild);
-
-    if (isLeaf(node))
-        Tools::drawPolygon(image, node->mPolygon);
-}
-
-bool ImageTree::isLeaf(Node*& node)
+bool ImageTree::isLeaf(Node* node)
 {
     if (!node->mLeftChild && !node->mRightChild)
         return true;
@@ -79,19 +84,14 @@ bool ImageTree::isLeaf(Node*& node)
 
 bool ImageTree::isLeftChild(Polygon& newPolygon, Polygon& currentPolygon)
 {
-    if (currentPolygon.getWidth() > currentPolygon.getHeight())
-      if (newPolygon.getTopLeft().x() < currentPolygon.getMiddleWidth())
+    if (currentPolygon.getWidth() >= currentPolygon.getHeight())
+      if (newPolygon.getTopLeft().x() <= currentPolygon.getMiddleWidth())
         return true;
       else
         return false;
     else
-      if (newPolygon.getTopLeft().y() < currentPolygon.getMiddleHeight())
+      if (newPolygon.getTopLeft().y() <= currentPolygon.getMiddleHeight())
         return true;
       else
         return false;
-}
-
-Node* ImageTree::getHead()
-{
-    return mHead;
 }

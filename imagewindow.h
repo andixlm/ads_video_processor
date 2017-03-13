@@ -24,14 +24,14 @@ public:
 private:
     Ui::ImageWindow *ui;
 
-    int mSizeThreshold;
-    int mBrightnessThreshold;
-
     QImage mOriginalImage;
     QImage mStagedImage;
     QImage mFinalImage;
 
     ImageTree mImageTree;
+
+    int mSizeThreshold;
+    int mBrightnessThreshold;
 
     void (ImageWindow::* processImage)();
     void buildGrid();

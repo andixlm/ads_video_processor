@@ -35,6 +35,8 @@ protected:
 private:
     bool mIsStopped;
 
+    QImage mImage;
+
     QMutex mMutex;
     QWaitCondition mWaitCondition;
 
@@ -42,8 +44,6 @@ private:
     cv::Mat mFrame;
     cv::Mat mRGBFrame;
     cv::VideoCapture mCapture;
-
-    QImage mImage;
 
 signals:
     void processedImage(const QImage& image);

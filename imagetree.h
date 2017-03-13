@@ -10,8 +10,7 @@ class Node
     friend ImageTree;
 
 public:
-    Node(Polygon polygon, Node* parent = nullptr,
-         Node* leftChild = nullptr, Node* rightChild = nullptr);
+    Node(Polygon polygon, Node* parent = nullptr, Node* leftChild = nullptr, Node* rightChild = nullptr);
 
 private:
     Polygon mPolygon;
@@ -27,22 +26,22 @@ public:
     explicit ImageTree(Node* head = nullptr);
     ~ImageTree();
 
-    void insert(Polygon polygon) { mHead = _insert(polygon, nullptr, mHead); }
-    void clear() { _clear(mHead); mHead = nullptr; }
+    Node* getHead();
 
     QImage toImageGrid();
 
-    Node* getHead();
+    void insert(Polygon polygon) { mHead = _insert(polygon, nullptr, mHead); }
+    void clear() { _clear(mHead); mHead = nullptr; }
 
 private:
     Node* mHead;
 
+    void _toImageGrid(QImage& image, Node* node);
+
     Node* _insert(Polygon polygon, Node* parent = nullptr, Node* node = nullptr);
     void _clear(Node* node);
 
-    void _toImageGrid(QImage& image, Node*& node);
-
-    bool isLeaf(Node*& node);
+    bool isLeaf(Node* node);
     bool isLeftChild(Polygon& newPolygon, Polygon& currentPolygon);
 };
 

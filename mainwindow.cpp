@@ -24,7 +24,6 @@ MainWindow::~MainWindow()
 {
     if (mImageWindow)
         delete mImageWindow;
-
     delete mPlayer;
     delete ui;
 }
