@@ -52,7 +52,7 @@ void ImageWindow::_buildGrid(Polygon polygon)
                                QPoint(middleWidth, polygon.getBottomRight().y())));
 
             _buildGrid(Polygon(mOriginalImage,
-                               QPoint(middleHeight + 1, polygon.getTopLeft().y()),
+                               QPoint(middleWidth + 1, polygon.getTopLeft().y()),
                                polygon.getBottomRight()));
         } else {
             // Devide with horizontal line.
