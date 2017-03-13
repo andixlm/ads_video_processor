@@ -18,8 +18,8 @@ public:
     QPoint getBottomRight() { return mBottomRight; }
     void setBottomRight(QPoint bottomRight) { mBottomRight = bottomRight; }
 
-    int getWidth() { return getBottomRight().x() - getTopLeft().x(); }
-    int getHeight() { return getBottomRight().y() - getTopLeft().y(); }
+    int getWidth() { return getBottomRight().x() - getTopLeft().x() + 1; }
+    int getHeight() { return getBottomRight().y() - getTopLeft().y() + 1; }
     int getMiddleWidth() { return (getBottomRight().x() + getTopLeft().x()) / 2; }
     int getMiddleHeight() { return (getBottomRight().y() + getTopLeft().y()) / 2; }
     QSize getSize() { return QSize(getWidth(), getHeight()); }
