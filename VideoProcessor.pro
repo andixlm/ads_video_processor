@@ -12,7 +12,8 @@ SOURCES += main.cpp mainwindow.cpp \
     player.cpp \
     polygon.cpp \
     rgb.cpp \
-    spins.cpp
+    spins.cpp \
+    tools.cpp
 
 HEADERS += mainwindow.h \
     exception.h \
@@ -20,7 +21,8 @@ HEADERS += mainwindow.h \
     imagewindow.h \
     player.h \
     polygon.h \
-    rgb.h
+    rgb.h \
+    tools.h
 
 FORMS += mainwindow.ui \
     imagewindow.ui

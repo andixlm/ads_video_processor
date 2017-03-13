@@ -15,8 +15,8 @@ ImageWindow::ImageWindow(QWidget* parent, QImage image) :
     mBrightnessThreshold = ui->brightnessSpin->value();
 
     mOriginalImage = image;
-    mStagedImage = getBlankImage(mOriginalImage.size());
-    mFinalImage = getBlankImage(mOriginalImage.size());
+    mStagedImage = Tools::getBlankImage(mOriginalImage.size());
+    mFinalImage = Tools::getBlankImage(mOriginalImage.size());
 
     if (mOriginalImage.width() > mOriginalImage.height())
         ui->originalImage->setPixmap(QPixmap::fromImage(mOriginalImage).scaledToWidth(Ui::FRAME_SIZE));
@@ -65,12 +65,4 @@ void ImageWindow::_buildGrid(Polygon polygon)
                                polygon.getBottomRight()));
         }
     }
-}
-
-QImage ImageWindow::getBlankImage(QSize size)
-{
-    QImage image = QImage(QPixmap(size).toImage());
-    image.fill(Qt::white);
-
-    return image;
 }

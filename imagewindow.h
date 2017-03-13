@@ -5,6 +5,7 @@
 #include <QImage>
 
 #include "imagetree.h"
+#include "tools.h"
 
 namespace Ui {
     class ImageWindow;
@@ -35,8 +36,6 @@ private:
     void (ImageWindow::* processImage)();
     void buildGrid();
     void _buildGrid(Polygon polygon);
-
-    QImage getBlankImage(QSize size);
 
     void on_openOriginalImage_clicked();
     void on_openStagedImage_clicked();
