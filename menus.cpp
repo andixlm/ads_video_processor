@@ -45,7 +45,7 @@ void MainWindow::on_actionOpenCurrentFrame_triggered()
 
     if (mImageWindow)
         delete mImageWindow;
-    mImageWindow = new ImageWindow(nullptr, currentFrame);
+    mImageWindow = new ImageWindow(this, currentFrame);
     mImageWindow->setFixedSize(mImageWindow->width(), mImageWindow->height());
     mImageWindow->show();
 }
