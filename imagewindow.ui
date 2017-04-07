@@ -6,34 +6,88 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>380</height>
+    <width>980</width>
+    <height>330</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Image</string>
   </property>
   <widget class="QWidget" name="mainWidget">
-   <widget class="QWidget" name="horizontalLayoutWidget_2">
+   <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>300</y>
-      <width>301</width>
-      <height>25</height>
+      <x>10</x>
+      <y>10</y>
+      <width>761</width>
+      <height>271</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="modes">
-     <item>
-      <widget class="QComboBox" name="modeBox">
-       <item>
-        <property name="text">
-         <string>Build grid</string>
-        </property>
-       </item>
+    <layout class="QGridLayout" name="imagesLayout">
+     <item row="0" column="2">
+      <widget class="QLabel" name="finalImage">
+       <property name="frameShape">
+        <enum>QFrame::Box</enum>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
       </widget>
      </item>
-     <item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="originalImage">
+       <property name="frameShape">
+        <enum>QFrame::Box</enum>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLabel" name="stagedImage">
+       <property name="frameShape">
+        <enum>QFrame::Box</enum>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QPushButton" name="openOriginalImage">
+       <property name="text">
+        <string>Open</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QPushButton" name="openStagedImage">
+       <property name="text">
+        <string>Open</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="QPushButton" name="openFinalImage">
+       <property name="text">
+        <string>Open</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="gridLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>780</x>
+      <y>168</y>
+      <width>190</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="controlLayout">
+     <item row="0" column="1">
       <widget class="QSpinBox" name="sizeSpin">
        <property name="minimum">
         <number>1</number>
@@ -46,7 +100,21 @@
        </property>
       </widget>
      </item>
-     <item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="sizeThrshldLabel">
+       <property name="text">
+        <string>Size threshold:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="brightnessThrshldLabel">
+       <property name="text">
+        <string>Brightness threshold:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
       <widget class="QSpinBox" name="brightnessSpin">
        <property name="maximum">
         <number>255</number>
@@ -56,7 +124,23 @@
        </property>
       </widget>
      </item>
-     <item>
+     <item row="2" column="1">
+      <widget class="QComboBox" name="modeBox">
+       <item>
+        <property name="text">
+         <string>Build grid</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="modeLabel">
+       <property name="text">
+        <string>Mode:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0" colspan="2">
       <widget class="QPushButton" name="runButton">
        <property name="text">
         <string>Run</string>
@@ -65,76 +149,55 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="horizontalLayoutWidget">
+   <widget class="QWidget" name="gridLayoutWidget_3">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>780</x>
       <y>10</y>
-      <width>761</width>
-      <height>251</height>
+      <width>191</width>
+      <height>111</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="images">
-     <item>
-      <widget class="QLabel" name="originalImage">
-       <property name="frameShape">
-        <enum>QFrame::Box</enum>
-       </property>
+    <layout class="QGridLayout" name="infoLayout">
+     <item row="1" column="1">
+      <widget class="QLabel" name="compressionCoefficientValue">
        <property name="text">
-        <string/>
+        <string>null</string>
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QLabel" name="stagedImage">
-       <property name="frameShape">
-        <enum>QFrame::Box</enum>
-       </property>
+     <item row="2" column="1">
+      <widget class="QLabel" name="polygonsNumberValue">
        <property name="text">
-        <string/>
+        <string>null</string>
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QLabel" name="finalImage">
-       <property name="frameShape">
-        <enum>QFrame::Box</enum>
-       </property>
+     <item row="0" column="1">
+      <widget class="QLabel" name="standartDeviationValue">
        <property name="text">
-        <string/>
+        <string>null</string>
        </property>
       </widget>
      </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="horizontalLayoutWidget_3">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>270</y>
-      <width>761</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QPushButton" name="openOriginalImage">
+     <item row="1" column="0">
+      <widget class="QLabel" name="compressionCoefficientLabel">
        <property name="text">
-        <string>Open</string>
+        <string>Compression coefficient:</string>
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QPushButton" name="openStagedImage">
+     <item row="2" column="0">
+      <widget class="QLabel" name="polygonsNumberLabel">
        <property name="text">
-        <string>Open</string>
+        <string>Polygons number:</string>
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QPushButton" name="openFinalImage">
+     <item row="0" column="0">
+      <widget class="QLabel" name="standartDeviationLabel">
        <property name="text">
-        <string>Open</string>
+        <string>Standart deviation:</string>
        </property>
       </widget>
      </item>
@@ -146,8 +209,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
-     <height>18</height>
+     <width>980</width>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
