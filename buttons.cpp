@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "ui_imagewindow.h"
 
 void MainWindow::on_playButton_clicked()
 {
@@ -35,4 +36,10 @@ void ImageWindow::on_openFinalImage_clicked()
 void ImageWindow::on_runButton_clicked()
 {
     (this->*processImage)();
+}
+
+void ImageWindow::on_clearButton_clicked()
+{
+    ui->stagedImage->clear();
+    ui->finalImage->clear();
 }

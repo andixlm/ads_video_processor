@@ -43,6 +43,7 @@ private:
 
 private slots:
     void on_runButton_clicked();
+    void on_clearButton_clicked();
 
     void on_modeBox_currentIndexChanged(int value);
 
