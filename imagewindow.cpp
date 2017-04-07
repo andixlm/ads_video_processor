@@ -8,6 +8,7 @@ ImageWindow::ImageWindow(QWidget* parent, QImage image) :
     ui(new Ui::ImageWindow)
 {
     ui->setupUi(this);
+    fullSizeImageWindow = nullptr;
 
     processImage = &ImageWindow::buildGrid;
 
@@ -20,6 +21,14 @@ ImageWindow::ImageWindow(QWidget* parent, QImage image) :
         ui->originalImage->setPixmap(QPixmap::fromImage(mOriginalImage).scaledToWidth(Ui::FRAME_SIZE));
     else
         ui->originalImage->setPixmap(QPixmap::fromImage(mOriginalImage).scaledToHeight(Ui::FRAME_SIZE));
+}
+
+FullSizeImageWindow::FullSizeImageWindow(QImage& image)
+{
+    mImageFrame.setWindowTitle(tr("Full size image"));
+    mImageFrame.setFixedSize(image.width(), image.height());
+    mImageFrame.setPixmap(QPixmap::fromImage(image));
+    mImageFrame.show();
 }
 
 ImageWindow::~ImageWindow()

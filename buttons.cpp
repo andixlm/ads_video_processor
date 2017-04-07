@@ -20,17 +20,26 @@ void MainWindow::on_stopButton_clicked()
 
 void ImageWindow::on_openOriginalImage_clicked()
 {
-    return;
+    if (!ui->originalImage->pixmap())
+        return;
+
+    fullSizeImageWindow = new FullSizeImageWindow(mOriginalImage);
 }
 
 void ImageWindow::on_openStagedImage_clicked()
 {
-    return;
+    if (!ui->stagedImage->pixmap())
+        return;
+
+    fullSizeImageWindow = new FullSizeImageWindow(mStagedImage);
 }
 
 void ImageWindow::on_openFinalImage_clicked()
 {
-    return;
+    if (!ui->finalImage->pixmap())
+        return;
+
+    fullSizeImageWindow = new FullSizeImageWindow(mFinalImage);
 }
 
 void ImageWindow::on_runButton_clicked()
