@@ -13,6 +13,7 @@ Node::Node(Polygon polygon, Node* parent, Node* leftChild, Node* rightChild)
 ImageTree::ImageTree(Node* head)
 {
     mHead = head;
+    mPolygonsNumber = 0;
 }
 
 ImageTree::~ImageTree()
@@ -23,6 +24,18 @@ ImageTree::~ImageTree()
 Node* ImageTree::getHead()
 {
     return mHead;
+}
+
+void ImageTree::_getPolygonsNumber(Node* node)
+{
+    if (!node)
+        return;
+
+    _getPolygonsNumber(node->mLeftChild);
+    _getPolygonsNumber(node->mRightChild);
+
+    if (isLeaf(node))
+        ++mPolygonsNumber;
 }
 
 QImage ImageTree::toImageGrid()

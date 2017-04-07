@@ -15,6 +15,8 @@ void ImageWindow::buildGrid()
         ui->stagedImage->setPixmap(QPixmap::fromImage(mStagedImage).scaledToWidth(Ui::FRAME_SIZE));
     else
         ui->stagedImage->setPixmap(QPixmap::fromImage(mStagedImage).scaledToHeight(Ui::FRAME_SIZE));
+
+    ui->polygonsNumberValue->setText(QString::number(mImageTree.getPolygonsNumber()));
 }
 
 void ImageWindow::_buildGrid(Polygon polygon)
