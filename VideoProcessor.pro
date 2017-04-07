@@ -9,6 +9,7 @@ SOURCES += main.cpp mainwindow.cpp \
     imagetree.cpp \
     imagewindow.cpp \
     menus.cpp \
+    modes.cpp \
     player.cpp \
     polygon.cpp \
     rgb.cpp \
