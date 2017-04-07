@@ -3,10 +3,10 @@
 
 #include "tools.h"
 
-QImage Tools::getBlankImage(QSize size)
+QImage Tools::getBlankImage(QSize size, int color = Qt::white)
 {
     QImage image = QImage(QPixmap(size).toImage());
-    image.fill(Qt::white);
+    image.fill(color);
 
     return image;
 }
