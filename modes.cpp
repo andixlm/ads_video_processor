@@ -16,7 +16,10 @@ void ImageWindow::buildGrid()
     else
         ui->stagedImage->setPixmap(QPixmap::fromImage(mStagedImage).scaledToHeight(Ui::FRAME_SIZE));
 
-    ui->polygonsNumberValue->setText(QString::number(mImageTree.getPolygonsNumber()));
+    int polygonsNumber = mImageTree.getPolygonsNumber();
+    ui->polygonsNumberValue->setText(QString::number(polygonsNumber));
+    ui->compressionCoefficientValue->setText(QString::number(static_cast<double>(mOriginalImage.width() * mOriginalImage.height()) /
+                                                             static_cast<double>(polygonsNumber)));
 }
 
 void ImageWindow::_buildGrid(Polygon polygon)
