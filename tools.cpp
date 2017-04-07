@@ -20,10 +20,10 @@ void Tools::drawPolygon(QImage& image, Polygon& polygon)
     painter.begin(&image);
     painter.setPen(QColor(Qt::black));
 
-    painter.drawLine(topLeft.x(), topLeft.y(), bottomRight.x(), topLeft.y());
-    painter.drawLine(bottomRight.x(), topLeft.y(), bottomRight.x(), bottomRight.y());
-    painter.drawLine(bottomRight.x(), bottomRight.y(), topLeft.x(), bottomRight.y());
-    painter.drawLine(topLeft.x(), bottomRight.y(), topLeft.x(), topLeft.y());
+    painter.drawLine(topLeft.x(), topLeft.y(), bottomRight.x(), topLeft.y()); // Top.
+    painter.drawLine(bottomRight.x(), topLeft.y(), bottomRight.x(), bottomRight.y()); // Right.
+    painter.drawLine(bottomRight.x(), bottomRight.y(), topLeft.x(), bottomRight.y()); // Bottom.
+    painter.drawLine(topLeft.x(), bottomRight.y(), topLeft.x(), topLeft.y()); // Left.
 
     painter.end();
 }
