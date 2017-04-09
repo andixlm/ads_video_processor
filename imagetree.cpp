@@ -38,6 +38,26 @@ void ImageTree::_getPolygonsNumber(Node* node)
         ++mPolygonsNumber;
 }
 
+QImage ImageTree::toImage()
+{
+    QImage image = Tools::getBlankImage(mHead->mPolygon.getSize());
+    _toImage(image, mHead);
+
+    return image;
+}
+
+void ImageTree::_toImage(QImage& image, Node* node)
+{
+    if (!node)
+        return;
+
+    _toImage(image, node->mLeftChild);
+    _toImage(image, node->mRightChild);
+
+    if (isLeaf(node))
+        Tools::fillPolygon(image, node->mPolygon);
+}
+
 QImage ImageTree::toImageGrid()
 {
     QImage image = Tools::getBlankImage(mHead->mPolygon.getSize());

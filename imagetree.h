@@ -29,6 +29,7 @@ public:
     Node* getHead();
     unsigned int getPolygonsNumber() { _getPolygonsNumber(mHead); return mPolygonsNumber; }
 
+    QImage toImage();
     QImage toImageGrid();
 
     void insert(Polygon polygon) { mHead = _insert(polygon, nullptr, mHead); }
@@ -39,6 +40,7 @@ private:
     unsigned int mPolygonsNumber;
 
     void _getPolygonsNumber(Node* node);
+    void _toImage(QImage& image, Node* node);
     void _toImageGrid(QImage& image, Node* node);
 
     Node* _insert(Polygon polygon, Node* parent = nullptr, Node* node = nullptr);
