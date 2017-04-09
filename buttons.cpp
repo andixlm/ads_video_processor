@@ -44,6 +44,8 @@ void ImageWindow::on_openFinalImage_clicked()
 
 void ImageWindow::on_runButton_clicked()
 {
+    ui->finalImage->clear();
+
     (this->*processImage)();
 }
 
@@ -51,4 +53,6 @@ void ImageWindow::on_clearButton_clicked()
 {
     ui->stagedImage->clear();
     ui->finalImage->clear();
+
+    mImageTree.clear();
 }
