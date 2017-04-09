@@ -4,6 +4,7 @@ TARGET = VideoProcessor
 TEMPLATE = app
 
 SOURCES += main.cpp mainwindow.cpp \
+    clickablelabel.cpp \
     boxes.cpp \
     buttons.cpp \
     imagetree.cpp \
@@ -17,6 +18,7 @@ SOURCES += main.cpp mainwindow.cpp \
     tools.cpp
 
 HEADERS += mainwindow.h \
+    clickablelabel.h \
     exception.h \
     imagetree.h \
     imagewindow.h \
