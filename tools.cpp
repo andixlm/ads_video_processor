@@ -27,3 +27,12 @@ void Tools::drawPolygon(QImage& image, Polygon& polygon)
 
     painter.end();
 }
+
+void Tools::fillPolygon(QImage& image, Polygon& polygon)
+{
+    QPainter painter;
+    painter.begin(&image);
+    painter.fillRect(QRect(polygon.getTopLeft(), polygon.getBottomRight()),
+                     QColor(polygon.getColor().getRed(), polygon.getColor().getGreen(), polygon.getColor().getBlue()));
+    painter.end();
+}
