@@ -26,6 +26,8 @@ public:
     explicit ImageTree(Node* head = nullptr);
     ~ImageTree();
 
+    bool isEmpty() { return mHead == nullptr; }
+
     Node* getHead();
     unsigned int getPolygonsNumber() { _getPolygonsNumber(mHead); return mPolygonsNumber; }
 
