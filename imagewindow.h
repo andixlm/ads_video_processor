@@ -40,6 +40,7 @@ private:
     void (ImageWindow::* processImage)();
     void buildGrid();
     void _buildGrid(Polygon polygon);
+    void restoreImage();
 
 private slots:
     void on_runButton_clicked();

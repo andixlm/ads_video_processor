@@ -54,3 +54,16 @@ void ImageWindow::_buildGrid(Polygon polygon)
         }
     }
 }
+
+void ImageWindow::restoreImage()
+{
+    if (mImageTree.isEmpty())
+        return;
+
+    mFinalImage = mImageTree.toImage();
+
+    if (mFinalImage.width() > mFinalImage.height())
+        ui->finalImage->setPixmap(QPixmap::fromImage(mFinalImage).scaledToWidth(Ui::FRAME_SIZE));
+    else
+        ui->finalImage->setPixmap(QPixmap::fromImage(mFinalImage).scaledToHeight(Ui::FRAME_SIZE));
+}
