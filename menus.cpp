@@ -31,7 +31,8 @@ void MainWindow::on_actionUnpackVideo_triggered()
     if (!mPlayer->isOpened())
         return;
 
-    on_pauseButton_clicked();
+    if (!mPlayer->isStopped())
+        mPlayer->pause();
 
     QString dirName = QFileDialog::getExistingDirectory(this, tr("Choose Directory"));
     if (!dirName.isEmpty())
@@ -44,7 +45,8 @@ void MainWindow::on_actionOpenCurrentFrame_triggered()
     if (currentFrame.isNull())
         return;
 
-    on_pauseButton_clicked();
+    if (!mPlayer->isStopped())
+        mPlayer->pause();
 
     if (mImageWindow)
         delete mImageWindow;
