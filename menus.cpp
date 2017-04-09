@@ -23,6 +23,10 @@ void MainWindow::on_actionClose_triggered()
 
 void MainWindow::on_actionExit_triggered()
 {
+    if (!mPlayer->isStopped())
+        mPlayer->pause();
+
+    mPlayer->closeVideo();
     QApplication::exit();
 }
 
