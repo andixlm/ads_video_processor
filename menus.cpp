@@ -5,6 +5,9 @@
 
 void MainWindow::on_actionOpen_triggered()
 {
+    if (!mPlayer->isStopped())
+        mPlayer->pause();
+
     QString fileName = QFileDialog::getOpenFileName(this, tr("Open Video"), ".", tr("*.avi"));
 
     if (!fileName.isEmpty()) {
