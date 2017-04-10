@@ -56,10 +56,10 @@ private slots:
     void on_brightnessSpin_valueChanged(int value);
 };
 
-class FullSizeImageWindow : public QWidget
+class FullSizeImageWindow : public QMainWindow
 {
 public:
-    FullSizeImageWindow(QImage& image);
+    FullSizeImageWindow(QWidget* parent = nullptr, QImage image = QImage());
 
 private:
     QLabel mImageFrame;

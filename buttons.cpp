@@ -23,7 +23,7 @@ void ImageWindow::on_openOriginalImage_clicked()
     if (!ui->originalImage->pixmap())
         return;
 
-    fullSizeImageWindow = new FullSizeImageWindow(mOriginalImage);
+    fullSizeImageWindow = new FullSizeImageWindow(this, mOriginalImage);
 }
 
 void ImageWindow::on_openStagedImage_clicked()
@@ -31,7 +31,7 @@ void ImageWindow::on_openStagedImage_clicked()
     if (!ui->stagedImage->pixmap())
         return;
 
-    fullSizeImageWindow = new FullSizeImageWindow(mStagedImage);
+    fullSizeImageWindow = new FullSizeImageWindow(this, mStagedImage);
 }
 
 void ImageWindow::on_openFinalImage_clicked()
@@ -39,7 +39,7 @@ void ImageWindow::on_openFinalImage_clicked()
     if (!ui->finalImage->pixmap())
         return;
 
-    fullSizeImageWindow = new FullSizeImageWindow(mFinalImage);
+    fullSizeImageWindow = new FullSizeImageWindow(this, mFinalImage);
 }
 
 void ImageWindow::on_runButton_clicked()
