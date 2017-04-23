@@ -1,6 +1,8 @@
+#include <QtMath>
 #include <QPixmap>
 
 #include "imagewindow.h"
+#include "rgb.h"
 #include "ui_imagewindow.h"
 
 void ImageWindow::buildGrid()
@@ -20,6 +22,23 @@ void ImageWindow::buildGrid()
     ui->polygonsNumberValue->setText(QString::number(polygonsNumber));
     ui->compressionCoefficientValue->setText(QString::number(static_cast<double>(mOriginalImage.width() * mOriginalImage.height()) /
                                                              static_cast<double>(polygonsNumber)));
+
+    // Restore image.
+    mFinalImage = mImageTree.toImage();
+
+    if (mFinalImage.width() > mFinalImage.height())
+        ui->finalImage->setPixmap(QPixmap::fromImage(mFinalImage).scaledToWidth(Ui::FRAME_SIZE));
+    else
+        ui->finalImage->setPixmap(QPixmap::fromImage(mFinalImage).scaledToHeight(Ui::FRAME_SIZE));
+
+    // Calculate standart deviation.
+    double deviation = 0.0;
+    for (int x = 0; x <= mOriginalImage.width() - 1; ++x)
+        for (int y = 0; y <= mOriginalImage.height() - 1; ++y)
+            deviation += qPow(static_cast<double>(Rgb(mOriginalImage, QPoint(x, y)).getBrightness()) -
+                              static_cast<double>(Rgb(mFinalImage, QPoint(x, y)).getBrightness()), 2.0);
+
+    ui->standartDeviationValue->setText(QString::number(qSqrt(deviation / (mOriginalImage.width() * mOriginalImage.height()))));
 }
 
 void ImageWindow::_buildGrid(Polygon polygon)
