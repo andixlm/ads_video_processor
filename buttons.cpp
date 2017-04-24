@@ -51,7 +51,11 @@ void ImageWindow::on_runButton_clicked()
 
 void ImageWindow::on_clearButton_clicked()
 {
+    ui->standartDeviationValue->setText("null");
+    ui->compressionCoefficientValue->setText("null");
+    ui->polygonsNumberValue->setText("null");
     ui->stagedImage->clear();
+
     ui->finalImage->clear();
 
     mImageTree.clear();
