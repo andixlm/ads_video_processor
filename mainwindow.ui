@@ -19,7 +19,7 @@
      <rect>
       <x>10</x>
       <y>400</y>
-      <width>131</width>
+      <width>254</width>
       <height>31</height>
      </rect>
     </property>
@@ -147,7 +147,7 @@
   </action>
   <action name="actionUnpackVideo">
    <property name="text">
-    <string>Unpack video</string>
+    <string>Unpack current video</string>
    </property>
   </action>
   <action name="actionOpenCurrentFrame">
