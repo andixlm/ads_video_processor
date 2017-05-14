@@ -31,6 +31,12 @@ public:
     Node* getHead();
     unsigned int getPolygonsNumber() { _getPolygonsNumber(mHead); return mPolygonsNumber; }
 
+    Polygon* getPolygonByPoint(double x, double y);
+    Polygon* getPolygonByPoint(QPoint point);
+    QVector<Polygon*> getPolygonsBySize(int size);
+    QVector<Polygon*> getAdjacentPolygonsBySize(Polygon* polygon, int size);
+    void getAllAdjacentPolygonsBySize(Polygon* polygon, int size, QVector<Polygon*>* polygons);
+
     QImage toImage();
     QImage toImageGrid();
 

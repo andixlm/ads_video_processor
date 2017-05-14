@@ -27,6 +27,11 @@ public:
     inline Rgb getColor() { return mColor; }
     inline void setColor(Rgb color) { mColor = color; }
 
+    bool isSize(int size);
+
+    bool hasPoint(double x, double y);
+    bool hasPoint(QPoint point);
+
     static bool isSizeThreshold(Polygon polygon, int threshold);
     static bool isBrightnessThreshold(QImage& image, Polygon& polygon, int threshold);
 

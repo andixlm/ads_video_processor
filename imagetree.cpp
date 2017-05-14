@@ -1,3 +1,5 @@
+#include <QQueue>
+
 #include "exception.h"
 #include "imagetree.h"
 #include "tools.h"
@@ -127,4 +129,152 @@ bool ImageTree::isLeftChild(Polygon& newPolygon, Polygon& currentPolygon)
         return true;
       else
         return false;
+}
+
+Polygon* ImageTree::getPolygonByPoint(double x, double y)
+{
+    if (isEmpty())
+        return nullptr;
+
+    QQueue<Node*> nodes;
+    nodes.enqueue(getHead());
+
+    while (!nodes.empty()) {
+        Node* currentNode = nodes.dequeue();
+
+        if (currentNode->mLeftChild != nullptr || currentNode->mRightChild != nullptr) {
+            nodes.enqueue(currentNode->mLeftChild);
+            nodes.enqueue(currentNode->mRightChild);
+        } else {
+            if (currentNode->mPolygon.hasPoint(x, y))
+                return &currentNode->mPolygon;
+        }
+    }
+
+    return nullptr;
+}
+
+Polygon* ImageTree::getPolygonByPoint(QPoint point)
+{
+    if (isEmpty())
+        return nullptr;
+
+    QQueue<Node*> nodes;
+    nodes.enqueue(getHead());
+
+    while (!nodes.empty()) {
+        Node* currentNode = nodes.dequeue();
+
+        if (currentNode->mLeftChild != nullptr || currentNode->mRightChild != nullptr) {
+            nodes.enqueue(currentNode->mLeftChild);
+            nodes.enqueue(currentNode->mRightChild);
+        } else {
+            if (currentNode->mPolygon.hasPoint(point))
+                return &currentNode->mPolygon;
+        }
+    }
+
+    return nullptr;
+}
+
+QVector<Polygon*> ImageTree::getPolygonsBySize(int size)
+{
+    QQueue<Node*> nodes;
+    nodes.enqueue(getHead());
+
+    QVector<Polygon*> polygons;
+    while (!nodes.empty()) {
+        Node* currentNode = nodes.dequeue();
+
+        if (currentNode->mLeftChild != nullptr || currentNode->mRightChild != nullptr) {
+            nodes.enqueue(currentNode->mLeftChild);
+            nodes.enqueue(currentNode->mRightChild);
+        } else {
+            if (currentNode->mPolygon.isSize(size))
+                polygons.append(&currentNode->mPolygon);
+        }
+    }
+
+    return polygons;
+}
+
+QVector<Polygon*> ImageTree::getAdjacentPolygonsBySize(Polygon* polygon, int size)
+{
+    QQueue<Polygon*> adjacentPolygons;
+
+    adjacentPolygons.enqueue(getPolygonByPoint(QPoint(polygon->getTopLeft().x() - 1,
+                                                      polygon->getTopLeft().y() - 1)));
+
+    adjacentPolygons.enqueue(getPolygonByPoint(QPoint(polygon->getTopLeft().x() + 1,
+                                                      polygon->getTopLeft().y() - 1)));
+
+    adjacentPolygons.enqueue(getPolygonByPoint(QPoint(polygon->getBottomRight().x() + 1,
+                                                      polygon->getTopLeft().y() - 1)));
+
+    adjacentPolygons.enqueue(getPolygonByPoint(QPoint(polygon->getBottomRight().x() + 1,
+                                                      polygon->getBottomRight().y() - 1)));
+
+    adjacentPolygons.enqueue(getPolygonByPoint(QPoint(polygon->getBottomRight().x() + 1,
+                                                      polygon->getBottomRight().y() + 1)));
+
+    adjacentPolygons.enqueue(getPolygonByPoint(QPoint(polygon->getBottomRight().x() - 1,
+                                                      polygon->getBottomRight().y() + 1)));
+
+    adjacentPolygons.enqueue(getPolygonByPoint(QPoint(polygon->getTopLeft().x() - 1,
+                                                      polygon->getBottomRight().y() + 1)));
+
+    adjacentPolygons.enqueue(getPolygonByPoint(QPoint(polygon->getTopLeft().x() - 1,
+                                                      polygon->getBottomRight().y() - 1)));
+
+    QVector<Polygon*> adjacentSizedPolygons;
+    while (!adjacentPolygons.empty()) {
+        Polygon* currentPolygon = adjacentPolygons.dequeue();
+
+        if (Polygon::isSizeThreshold(*currentPolygon, size))
+            adjacentSizedPolygons.append(currentPolygon);
+    }
+
+    return adjacentSizedPolygons;
+}
+
+void ImageTree::getAllAdjacentPolygonsBySize(Polygon* polygon, int size, QVector<Polygon*>* polygons)
+{
+    if (polygon != nullptr && polygon->isSize(size) && !polygons->contains(polygon))
+        polygons->append(polygon);
+    else
+        return;
+
+    Polygon* upperLeft = getPolygonByPoint(static_cast<double>(polygon->getTopLeft().x()) - 0.5,
+                                           static_cast<double>(polygon->getTopLeft().y()) - 0.5);
+
+    Polygon* upper = getPolygonByPoint(static_cast<double>(polygon->getTopLeft().x()) + 0.5,
+                                       static_cast<double>(polygon->getTopLeft().y()) - 0.5);
+
+    Polygon* upperRight = getPolygonByPoint(static_cast<double>(polygon->getBottomRight().x()) + 0.5,
+                                            static_cast<double>(polygon->getTopLeft().y()) - 0.5);
+
+    Polygon* right = getPolygonByPoint(static_cast<double>(polygon->getBottomRight().x()) + 0.5,
+                                       static_cast<double>(polygon->getBottomRight().y()) - 0.5);
+
+    Polygon* lowerRight = getPolygonByPoint(static_cast<double>(polygon->getBottomRight().x()) + 0.5,
+                                            static_cast<double>(polygon->getBottomRight().y()) + 0.5);
+
+    Polygon* lower = getPolygonByPoint(static_cast<double>(polygon->getBottomRight().x()) - 0.5,
+                                       static_cast<double>(polygon->getBottomRight().y()) + 0.5);
+
+    Polygon* lowerLeft = getPolygonByPoint(static_cast<double>(polygon->getTopLeft().x()) - 0.5,
+                                           static_cast<double>(polygon->getBottomRight().y()) + 0.5);
+
+    Polygon* left = getPolygonByPoint(static_cast<double>(polygon->getTopLeft().x()) - 0.5,
+                                      static_cast<double>(polygon->getBottomRight().y()) - 0.5);
+
+
+    getAllAdjacentPolygonsBySize(upperLeft, size, polygons);
+    getAllAdjacentPolygonsBySize(upper, size, polygons);
+    getAllAdjacentPolygonsBySize(upperRight, size, polygons);
+    getAllAdjacentPolygonsBySize(right, size, polygons);
+    getAllAdjacentPolygonsBySize(lowerRight, size, polygons);
+    getAllAdjacentPolygonsBySize(lower, size, polygons);
+    getAllAdjacentPolygonsBySize(lowerLeft, size, polygons);
+    getAllAdjacentPolygonsBySize(left, size, polygons);
 }

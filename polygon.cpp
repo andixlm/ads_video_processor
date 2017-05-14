@@ -41,3 +41,24 @@ bool Polygon::isBrightnessThreshold(QImage& image, Polygon& polygon, int thresho
 
     return false;
 }
+
+bool Polygon::isSize(int size) {
+    return getHeight() == size || getWidth() == size;
+}
+
+bool Polygon::hasPoint(double x, double y)
+{
+    return
+            x >= static_cast<double>(getTopLeft().x()) && x <= static_cast<double>(getBottomRight().x()) &&
+            y >= static_cast<double>(getTopLeft().y()) && y <= static_cast<double>(getBottomRight().y());
+}
+
+bool Polygon::hasPoint(QPoint point)
+{
+    if (getTopLeft() == point)
+        return true;
+
+    return
+            point.x() >= getTopLeft().x() && point.x() <= getBottomRight().x() &&
+            point.y() >= getTopLeft().y() && point.y() <= getBottomRight().y();
+}
