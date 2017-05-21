@@ -1,4 +1,5 @@
 #include "clickablelabel.h"
+#include "imagewindow.h"
 
 ClickableLabel::ClickableLabel(QWidget* parent) :
     QLabel(parent)

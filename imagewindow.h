@@ -21,6 +21,8 @@ class ImageWindow : public QMainWindow
 {
     Q_OBJECT
 
+    friend class FullSizeImageWindow;
+
 public:
     explicit ImageWindow(QWidget* parent = nullptr, QImage image = QImage());
     ~ImageWindow();
@@ -59,12 +61,17 @@ private slots:
 
 class FullSizeImageWindow : public QMainWindow
 {
+    Q_OBJECT
+
 public:
     FullSizeImageWindow(QWidget* parent = nullptr, QImage image = QImage());
 
 private:
     ImageWindow* mParentImageWindow;
     ClickableLabel mImageFrame;
+
+private slots:
+    void mouseButtonPressed(QMouseEvent* event);
 };
 
 #endif // IMAGEWINDOW_H

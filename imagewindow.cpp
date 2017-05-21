@@ -27,12 +27,20 @@ FullSizeImageWindow::FullSizeImageWindow(QWidget* parent, QImage image) :
     QMainWindow(parent),
     mParentImageWindow(static_cast<ImageWindow*>(parent))
 {
+    connect(&mImageFrame, &ClickableLabel::clicked,
+            this, &FullSizeImageWindow::mouseButtonPressed);
+
     mImageFrame.setParent(this);
     mImageFrame.setGeometry(0, 0, image.width(), image.height());
     mImageFrame.setPixmap(QPixmap::fromImage(image));
 
     this->setFixedSize(image.width(), image.height());
     this->show();
+}
+
+void FullSizeImageWindow::mouseButtonPressed(QMouseEvent* event)
+{
+    return;
 }
 
 ImageWindow::~ImageWindow()
