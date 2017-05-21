@@ -33,9 +33,13 @@ public:
 
     Polygon* getPolygonByPoint(double x, double y);
     Polygon* getPolygonByPoint(QPoint point);
+
     QVector<Polygon*> getPolygonsBySize(int size);
     QVector<Polygon*> getAdjacentPolygonsBySize(Polygon* polygon, int size);
     void getAllAdjacentPolygonsBySize(Polygon* polygon, int size, QVector<Polygon*>* polygons);
+
+    QVector<Polygon*> getAdjacentPolygonsByBrightness(Polygon* polygon, int brightness, int threshold);
+    void getAllAdjacentPolygonsByBrightness(Polygon* polygon, int brightness, int threshold, QVector<Polygon*>* polygons);
 
     QImage toImage();
     QImage toImageGrid();
