@@ -14,9 +14,9 @@ void ImageWindow::buildGrid()
     mStagedImage = mImageTree.toImageGrid();
 
     if (mStagedImage.width() > mStagedImage.height())
-        ui->stagedImage->setPixmap(QPixmap::fromImage(mStagedImage).scaledToWidth(Ui::FRAME_SIZE));
+        ui->stagedImage->setPixmap(QPixmap::fromImage(mStagedImage).scaledToWidth(Ui::FRAME_SIZE, Qt::SmoothTransformation));
     else
-        ui->stagedImage->setPixmap(QPixmap::fromImage(mStagedImage).scaledToHeight(Ui::FRAME_SIZE));
+        ui->stagedImage->setPixmap(QPixmap::fromImage(mStagedImage).scaledToHeight(Ui::FRAME_SIZE, Qt::SmoothTransformation));
 
     int polygonsNumber = mImageTree.getPolygonsNumber();
     ui->polygonsNumberValue->setText(QString::number(polygonsNumber));
@@ -27,9 +27,9 @@ void ImageWindow::buildGrid()
     mFinalImage = mImageTree.toImage();
 
     if (mFinalImage.width() > mFinalImage.height())
-        ui->finalImage->setPixmap(QPixmap::fromImage(mFinalImage).scaledToWidth(Ui::FRAME_SIZE));
+        ui->finalImage->setPixmap(QPixmap::fromImage(mFinalImage).scaledToWidth(Ui::FRAME_SIZE, Qt::SmoothTransformation));
     else
-        ui->finalImage->setPixmap(QPixmap::fromImage(mFinalImage).scaledToHeight(Ui::FRAME_SIZE));
+        ui->finalImage->setPixmap(QPixmap::fromImage(mFinalImage).scaledToHeight(Ui::FRAME_SIZE, Qt::SmoothTransformation));
 
     // Calculate standart deviation.
     double deviation = 0.0;
@@ -82,7 +82,7 @@ void ImageWindow::restoreImage()
     mFinalImage = mImageTree.toImage();
 
     if (mFinalImage.width() > mFinalImage.height())
-        ui->finalImage->setPixmap(QPixmap::fromImage(mFinalImage).scaledToWidth(Ui::FRAME_SIZE));
+        ui->finalImage->setPixmap(QPixmap::fromImage(mFinalImage).scaledToWidth(Ui::FRAME_SIZE, Qt::SmoothTransformation));
     else
-        ui->finalImage->setPixmap(QPixmap::fromImage(mFinalImage).scaledToHeight(Ui::FRAME_SIZE));
+        ui->finalImage->setPixmap(QPixmap::fromImage(mFinalImage).scaledToHeight(Ui::FRAME_SIZE, Qt::SmoothTransformation));
 }

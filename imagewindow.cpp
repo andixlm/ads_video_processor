@@ -18,9 +18,9 @@ ImageWindow::ImageWindow(QWidget* parent, QImage image) :
     mOriginalImage = image;
 
     if (mOriginalImage.width() > mOriginalImage.height())
-        ui->originalImage->setPixmap(QPixmap::fromImage(mOriginalImage).scaledToWidth(Ui::FRAME_SIZE));
+        ui->originalImage->setPixmap(QPixmap::fromImage(mOriginalImage).scaledToWidth(Ui::FRAME_SIZE, Qt::SmoothTransformation));
     else
-        ui->originalImage->setPixmap(QPixmap::fromImage(mOriginalImage).scaledToHeight(Ui::FRAME_SIZE));
+        ui->originalImage->setPixmap(QPixmap::fromImage(mOriginalImage).scaledToHeight(Ui::FRAME_SIZE, Qt::SmoothTransformation));
 }
 
 FullSizeImageWindow::FullSizeImageWindow(QWidget* parent, QImage image) :
