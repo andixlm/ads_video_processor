@@ -63,6 +63,7 @@ public:
     FullSizeImageWindow(QWidget* parent = nullptr, QImage image = QImage());
 
 private:
+    ImageWindow* mParentImageWindow;
     ClickableLabel mImageFrame;
 };
 

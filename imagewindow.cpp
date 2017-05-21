@@ -24,7 +24,8 @@ ImageWindow::ImageWindow(QWidget* parent, QImage image) :
 }
 
 FullSizeImageWindow::FullSizeImageWindow(QWidget* parent, QImage image) :
-    QMainWindow(parent)
+    QMainWindow(parent),
+    mParentImageWindow(static_cast<ImageWindow*>(parent))
 {
     mImageFrame.setParent(this);
     mImageFrame.setGeometry(0, 0, image.width(), image.height());
