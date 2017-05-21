@@ -5,6 +5,7 @@
 #include <QLabel>
 #include <QMainWindow>
 
+#include "clickablelabel.h"
 #include "imagetree.h"
 #include "tools.h"
 
@@ -62,7 +63,7 @@ public:
     FullSizeImageWindow(QWidget* parent = nullptr, QImage image = QImage());
 
 private:
-    QLabel mImageFrame;
+    ClickableLabel mImageFrame;
 };
 
 #endif // IMAGEWINDOW_H
