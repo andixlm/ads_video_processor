@@ -58,5 +58,6 @@ void ImageWindow::on_clearButton_clicked()
 
     ui->finalImage->clear();
 
+    mSelectedPolygons.clear();
     mImageTree.clear();
 }
