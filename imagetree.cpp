@@ -77,7 +77,7 @@ void ImageTree::_toImageGrid(QImage& image, Node* node)
     _toImageGrid(image, node->mRightChild);
 
     if (isLeaf(node))
-        Tools::drawPolygon(image, node->mPolygon, Qt::black);
+        Tools::drawPolygon(image, node->mPolygon);
 }
 
 Node* ImageTree::_insert(Polygon polygon, Node* parent, Node* node)
