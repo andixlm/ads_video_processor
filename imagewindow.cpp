@@ -45,6 +45,20 @@ FullSizeImageWindow::FullSizeImageWindow(QWidget* parent, QImage image) :
     this->show();
 }
 
+void FullSizeImageWindow::clickedNewImage()
+{
+    mFillPolygons = !mFillPolygons;
+
+    mNewImage = Tools::getBlankImage(mNewImage.size());
+
+    if (mFillPolygons)
+        Tools::fillPolygons(mNewImage, &mParentImageWindow->mSelectedPolygons);
+    else
+        Tools::drawPolygons(mNewImage, &mParentImageWindow->mSelectedPolygons);
+
+    mNewImageFrame.setPixmap(QPixmap::fromImage(mNewImage));
+}
+
 void FullSizeImageWindow::mouseButtonPressed(QMouseEvent* event)
 {
     return;

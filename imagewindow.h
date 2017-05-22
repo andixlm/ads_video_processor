@@ -71,15 +71,18 @@ public:
 private:
     int offset = 10;
 
+    bool mFillPolygons = false;
+
     ImageWindow* mParentImageWindow;
 
-    QImage mStaticImage;
-    QImage mClickableImage;
+    QImage mNewImage;
+    QImage mCurrentImage;
 
-    QLabel mStaticImageFrame;
-    ClickableLabel mClickableImageFrame;
+    ClickableLabel mNewImageFrame;
+    ClickableLabel mCurrentImageFrame;
 
 private slots:
+    void clickedNewImage();
     void mouseButtonPressed(QMouseEvent* event);
 };
 
