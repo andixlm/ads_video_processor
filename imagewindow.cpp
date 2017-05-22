@@ -73,7 +73,21 @@ void FullSizeImageWindow::clickedNewImage()
 
 void FullSizeImageWindow::mouseButtonPressed(QMouseEvent* event)
 {
-    return;
+    Polygon* selectedPolygon = mParentImageWindow->mImageTree.getPolygonByPoint(QPoint(event->x(), event->y()));
+    if (!selectedPolygon)
+        return;
+
+    mParentImageWindow->mImageTree.getAllAdjacentPolygonsByBrightness(selectedPolygon,
+                                                                      selectedPolygon->getColor().getBrightness(),
+                                                                      mParentImageWindow->mBrightnessThreshold,
+                                                                      &mParentImageWindow->mSelectedPolygons);
+
+    if (mFillPolygons)
+        Tools::fillPolygons(mNewImage, &mParentImageWindow->mSelectedPolygons);
+    else
+        Tools::drawPolygons(mNewImage, &mParentImageWindow->mSelectedPolygons);
+
+    mNewImageFrame.setPixmap(QPixmap::fromImage(mNewImage));
 }
 
 ImageWindow::~ImageWindow()
