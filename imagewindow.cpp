@@ -27,14 +27,21 @@ FullSizeImageWindow::FullSizeImageWindow(QWidget* parent, QImage image) :
     QMainWindow(parent),
     mParentImageWindow(static_cast<ImageWindow*>(parent))
 {
-    connect(&mImageFrame, &ClickableLabel::clicked,
+    connect(&mClickableImageFrame, &ClickableLabel::clicked,
             this, &FullSizeImageWindow::mouseButtonPressed);
 
-    mImageFrame.setParent(this);
-    mImageFrame.setGeometry(0, 0, image.width(), image.height());
-    mImageFrame.setPixmap(QPixmap::fromImage(image));
+    mStaticImage = Tools::getBlankImage(QSize(image.size()));
+    mClickableImage = image;
 
-    this->setFixedSize(image.width(), image.height());
+    mStaticImageFrame.setParent(this);
+    mStaticImageFrame.setGeometry(0, 0, image.width(), image.height());
+    mStaticImageFrame.setPixmap(QPixmap::fromImage(mStaticImage));
+
+    mClickableImageFrame.setParent(this);
+    mClickableImageFrame.setGeometry(image.width() + offset, 0, 2 * image.width() + offset, image.height());
+    mClickableImageFrame.setPixmap(QPixmap::fromImage(mClickableImage));
+
+    this->setFixedSize(2 * image.width() + offset, image.height());
     this->show();
 }
 

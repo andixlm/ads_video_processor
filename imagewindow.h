@@ -69,8 +69,15 @@ public:
     FullSizeImageWindow(QWidget* parent = nullptr, QImage image = QImage());
 
 private:
+    int offset = 10;
+
     ImageWindow* mParentImageWindow;
-    ClickableLabel mImageFrame;
+
+    QImage mStaticImage;
+    QImage mClickableImage;
+
+    QLabel mStaticImageFrame;
+    ClickableLabel mClickableImageFrame;
 
 private slots:
     void mouseButtonPressed(QMouseEvent* event);
