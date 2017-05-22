@@ -320,43 +320,28 @@ QVector<Polygon*> ImageTree::getAdjacentPolygonsByBrightness(Polygon* polygon, i
 
 void ImageTree::getAllAdjacentPolygonsByBrightness(Polygon* polygon, int brightness, int threshold, QVector<Polygon*>* polygons)
 {
-    if (polygon != nullptr
-            && (qAbs(polygon->getColor().getBrightness() - brightness) < threshold)
-            && !polygons->contains(polygon))
+    int brightnessDifference = qAbs(polygon->getColor().getBrightness() - brightness);
+
+    if (polygon != nullptr && brightnessDifference < threshold && !polygons->contains(polygon))
         polygons->append(polygon);
     else
         return;
 
-    Polygon* upperLeft = getPolygonByPoint(static_cast<double>(polygon->getTopLeft().x()) - 0.5,
-                                           static_cast<double>(polygon->getTopLeft().y()) - 0.5);
+    Polygon* upperLeft =    getPolygonByPoint(QPoint(polygon->getTopLeft().x()      - 1, polygon->getTopLeft().y()      - 1));
+    Polygon* upper =        getPolygonByPoint(QPoint(polygon->getTopLeft().x()      + 1, polygon->getTopLeft().y()      - 1));
+    Polygon* upperRight =   getPolygonByPoint(QPoint(polygon->getBottomRight().x()  + 1, polygon->getTopLeft().y()      - 1));
+    Polygon* right =        getPolygonByPoint(QPoint(polygon->getBottomRight().x()  + 1, polygon->getBottomRight().y()  - 1));
+    Polygon* lowerRight =   getPolygonByPoint(QPoint(polygon->getBottomRight().x()  + 1, polygon->getBottomRight().y()  + 1));
+    Polygon* lower =        getPolygonByPoint(QPoint(polygon->getBottomRight().x()  - 1, polygon->getBottomRight().y()  + 1));
+    Polygon* lowerLeft =    getPolygonByPoint(QPoint(polygon->getTopLeft().x()      - 1, polygon->getBottomRight().y()  + 1));
+    Polygon* left =         getPolygonByPoint(QPoint(polygon->getTopLeft().x()      - 1, polygon->getBottomRight().y()  - 1));
 
-    Polygon* upper = getPolygonByPoint(static_cast<double>(polygon->getTopLeft().x()) + 0.5,
-                                       static_cast<double>(polygon->getTopLeft().y()) - 0.5);
-
-    Polygon* upperRight = getPolygonByPoint(static_cast<double>(polygon->getBottomRight().x()) + 0.5,
-                                            static_cast<double>(polygon->getTopLeft().y()) - 0.5);
-
-    Polygon* right = getPolygonByPoint(static_cast<double>(polygon->getBottomRight().x()) + 0.5,
-                                       static_cast<double>(polygon->getBottomRight().y()) - 0.5);
-
-    Polygon* lowerRight = getPolygonByPoint(static_cast<double>(polygon->getBottomRight().x()) + 0.5,
-                                            static_cast<double>(polygon->getBottomRight().y()) + 0.5);
-
-    Polygon* lower = getPolygonByPoint(static_cast<double>(polygon->getBottomRight().x()) - 0.5,
-                                       static_cast<double>(polygon->getBottomRight().y()) + 0.5);
-
-    Polygon* lowerLeft = getPolygonByPoint(static_cast<double>(polygon->getTopLeft().x()) - 0.5,
-                                           static_cast<double>(polygon->getBottomRight().y()) + 0.5);
-
-    Polygon* left = getPolygonByPoint(static_cast<double>(polygon->getTopLeft().x()) - 0.5,
-                                      static_cast<double>(polygon->getBottomRight().y()) - 0.5);
-
-    getAllAdjacentPolygonsByBrightness(upperLeft, brightness, threshold, polygons);
-    getAllAdjacentPolygonsByBrightness(upper, brightness, threshold, polygons);
-    getAllAdjacentPolygonsByBrightness(upperRight, brightness, threshold, polygons);
-    getAllAdjacentPolygonsByBrightness(right, brightness, threshold, polygons);
-    getAllAdjacentPolygonsByBrightness(lowerRight, brightness, threshold, polygons);
-    getAllAdjacentPolygonsByBrightness(lower, brightness, threshold, polygons);
-    getAllAdjacentPolygonsByBrightness(lowerLeft, brightness, threshold, polygons);
-    getAllAdjacentPolygonsByBrightness(left, brightness, threshold, polygons);
+    if (upperLeft)  getAllAdjacentPolygonsByBrightness(upperLeft,   brightness, threshold, polygons);
+    if (upper)      getAllAdjacentPolygonsByBrightness(upper,       brightness, threshold, polygons);
+    if (upperRight) getAllAdjacentPolygonsByBrightness(upperRight,  brightness, threshold, polygons);
+    if (right)      getAllAdjacentPolygonsByBrightness(right,       brightness, threshold, polygons);
+    if (lowerRight) getAllAdjacentPolygonsByBrightness(lowerRight,  brightness, threshold, polygons);
+    if (lower)      getAllAdjacentPolygonsByBrightness(lower,       brightness, threshold, polygons);
+    if (lowerLeft)  getAllAdjacentPolygonsByBrightness(lowerLeft,   brightness, threshold, polygons);
+    if (left)       getAllAdjacentPolygonsByBrightness(left,        brightness, threshold, polygons);
 }
