@@ -11,14 +11,14 @@ QImage Tools::getBlankImage(QSize size)
     return image;
 }
 
-void Tools::drawPolygon(QImage& image, Polygon& polygon)
+void Tools::drawPolygon(QImage& image, Polygon& polygon, int color)
 {
     QPoint topLeft = polygon.getTopLeft();
     QPoint bottomRight = polygon.getBottomRight();
 
     QPainter painter;
     painter.begin(&image);
-    painter.setPen(QColor(Qt::black));
+    painter.setPen(QColor(color));
 
     painter.drawRect(QRect(topLeft, bottomRight));
 

@@ -8,7 +8,7 @@
 namespace Tools {
     QImage getBlankImage(QSize size);
 
-    void drawPolygon(QImage& image, Polygon& polygon);
+    void drawPolygon(QImage& image, Polygon& polygon, int color);
     void fillPolygon(QImage& image, Polygon& polygon);
 }
 
