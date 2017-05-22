@@ -27,19 +27,31 @@ FullSizeImageWindow::FullSizeImageWindow(QWidget* parent, QImage image) :
     QMainWindow(parent),
     mParentImageWindow(static_cast<ImageWindow*>(parent))
 {
-    connect(&mClickableImageFrame, &ClickableLabel::clicked,
+    connect(&mNewImageFrame, &ClickableLabel::clicked,
+            this, &FullSizeImageWindow::clickedNewImage);
+
+    connect(&mCurrentImageFrame, &ClickableLabel::clicked,
             this, &FullSizeImageWindow::mouseButtonPressed);
 
-    mStaticImage = Tools::getBlankImage(QSize(image.size()));
-    mClickableImage = image;
+    mNewImage = Tools::getBlankImage(QSize(image.size()));
 
-    mStaticImageFrame.setParent(this);
-    mStaticImageFrame.setGeometry(0, 0, image.width(), image.height());
-    mStaticImageFrame.setPixmap(QPixmap::fromImage(mStaticImage));
+    if (!mParentImageWindow->mSelectedPolygons.empty())
+    {
+        if (mFillPolygons)
+            Tools::fillPolygons(mNewImage, &mParentImageWindow->mSelectedPolygons);
+        else
+            Tools::drawPolygons(mNewImage, &mParentImageWindow->mSelectedPolygons);
+    }
 
-    mClickableImageFrame.setParent(this);
-    mClickableImageFrame.setGeometry(image.width() + offset, 0, 2 * image.width() + offset, image.height());
-    mClickableImageFrame.setPixmap(QPixmap::fromImage(mClickableImage));
+    mCurrentImage = image;
+
+    mNewImageFrame.setParent(this);
+    mNewImageFrame.setGeometry(0, 0, image.width(), image.height());
+    mNewImageFrame.setPixmap(QPixmap::fromImage(mNewImage));
+
+    mCurrentImageFrame.setParent(this);
+    mCurrentImageFrame.setGeometry(image.width() + offset, 0, 2 * image.width() + offset, image.height());
+    mCurrentImageFrame.setPixmap(QPixmap::fromImage(mCurrentImage));
 
     this->setFixedSize(2 * image.width() + offset, image.height());
     this->show();
