@@ -31,7 +31,7 @@ FullSizeImageWindow::FullSizeImageWindow(QWidget* parent, QImage image) :
             this, &FullSizeImageWindow::clickedNewImage);
 
     connect(&mCurrentImageFrame, &ClickableLabel::clicked,
-            this, &FullSizeImageWindow::mouseButtonPressed);
+            this, &FullSizeImageWindow::clickedCurrentImage);
 
     mNewImage = Tools::getBlankImage(QSize(image.size()));
 
@@ -71,7 +71,7 @@ void FullSizeImageWindow::clickedNewImage()
     mNewImageFrame.setPixmap(QPixmap::fromImage(mNewImage));
 }
 
-void FullSizeImageWindow::mouseButtonPressed(QMouseEvent* event)
+void FullSizeImageWindow::clickedCurrentImage(QMouseEvent* event)
 {
     Polygon* selectedPolygon = mParentImageWindow->mImageTree.getPolygonByPoint(QPoint(event->x(), event->y()));
     if (!selectedPolygon)

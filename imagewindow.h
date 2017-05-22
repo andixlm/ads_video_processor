@@ -83,7 +83,7 @@ private:
 
 private slots:
     void clickedNewImage();
-    void mouseButtonPressed(QMouseEvent* event);
+    void clickedCurrentImage(QMouseEvent* event);
 };
 
 #endif // IMAGEWINDOW_H
