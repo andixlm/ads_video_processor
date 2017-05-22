@@ -62,3 +62,13 @@ bool Polygon::hasPoint(QPoint point)
             point.x() >= getTopLeft().x() && point.x() <= getBottomRight().x() &&
             point.y() >= getTopLeft().y() && point.y() <= getBottomRight().y();
 }
+
+bool Polygon::operator==(Polygon& rhs)
+{
+    return (this->getTopLeft() == rhs.getTopLeft() && this->getBottomRight() == rhs.getBottomRight());
+}
+
+bool Polygon::operator!=(Polygon& rhs)
+{
+    return !(*this == rhs);
+}

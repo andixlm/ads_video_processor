@@ -13,6 +13,9 @@ public:
     Polygon(QImage& image, QPoint topLeft, QPoint bottomRight);
     Polygon(QPoint topLeft = QPoint(), QPoint bottomRight = QPoint(), Rgb color = Rgb());
 
+    bool operator==(Polygon& rhs);
+    bool operator!=(Polygon& rhs);
+
     inline QPoint getTopLeft() { return mTopLeft; }
     inline void setTopLeft(QPoint topLeft) { mTopLeft = topLeft; }
     inline QPoint getBottomRight() { return mBottomRight; }
