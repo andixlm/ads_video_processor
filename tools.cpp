@@ -25,6 +25,16 @@ void Tools::drawPolygon(QImage& image, Polygon& polygon, int color)
     painter.end();
 }
 
+void Tools::drawPolygons(QImage& image, QVector<Polygon*>* polygons, int color)
+{
+    if (!polygons)
+        return;
+
+    for (QVector<Polygon*>::const_iterator polygon = polygons->begin(), end = polygons->end(); polygon != end; ++polygon) {
+        Tools::drawPolygon(image, **polygon, color);
+    }
+}
+
 void Tools::fillPolygon(QImage& image, Polygon& polygon)
 {
     QPainter painter;
@@ -32,4 +42,14 @@ void Tools::fillPolygon(QImage& image, Polygon& polygon)
     painter.fillRect(QRect(polygon.getTopLeft(), polygon.getBottomRight()),
                      QColor(polygon.getColor().getRed(), polygon.getColor().getGreen(), polygon.getColor().getBlue()));
     painter.end();
+}
+
+void Tools::fillPolygons(QImage& image, QVector<Polygon*>* polygons)
+{
+    if (!polygons)
+        return;
+
+    for (QVector<Polygon*>::const_iterator polygon = polygons->begin(), end = polygons->end(); polygon != end; ++polygon) {
+        Tools::fillPolygon(image, **polygon);
+    }
 }
