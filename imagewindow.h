@@ -37,6 +37,8 @@ private:
 
     ImageTree mImageTree;
 
+    QVector<Polygon*> mSelectedPolygons;
+
     int mSizeThreshold;
     int mBrightnessThreshold;
 
