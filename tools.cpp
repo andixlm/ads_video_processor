@@ -24,9 +24,9 @@ void Tools::drawPolygon(QImage& image, Polygon& polygon, int color)
     QPoint bottomRight = polygon.getBottomRight();
 
     QPainter painter;
-    painter.setPen(QColor(color));
 
     painter.begin(&image);
+    painter.setPen(QColor(color));
     painter.drawRect(QRect(topLeft, bottomRight));
     painter.end();
 }
