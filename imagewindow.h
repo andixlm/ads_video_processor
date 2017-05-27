@@ -81,6 +81,8 @@ private:
     QImage mNewImage;
     QImage mCurrentImage;
 
+    QLabel mInfoLabel;
+
     ClickableLabel mNewImageFrame;
     ClickableLabel mCurrentImageFrame;
 

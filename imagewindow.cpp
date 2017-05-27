@@ -1,4 +1,5 @@
 #include <QImage>
+#include <QLabel>
 #include <QMainWindow>
 #include <QPixmap>
 #include <QPoint>
@@ -8,6 +9,10 @@
 #include "imagewindow.h"
 #include "polygon.h"
 #include "ui_imagewindow.h"
+
+const char infoText[] =
+        "Инструкция: Для выделения областей на изображении, кликните на правое изображение и ожидайте окончания работы.\n"
+        "Для изменения типа отрисовки, кликните на левое изображение.";
 
 ImageWindow::ImageWindow(QWidget* parent, QImage image) :
     QMainWindow(parent),
@@ -52,14 +57,18 @@ FullSizeImageWindow::FullSizeImageWindow(QWidget* parent, QImage image) :
     mCurrentImage = image;
 
     mNewImageFrame.setParent(this);
-    mNewImageFrame.setGeometry(0, 0, image.width(), image.height());
+    mNewImageFrame.setGeometry(0, 6 * offset, image.width(), image.height());
     mNewImageFrame.setPixmap(QPixmap::fromImage(mNewImage));
 
     mCurrentImageFrame.setParent(this);
-    mCurrentImageFrame.setGeometry(image.width() + offset, 0, 2 * image.width() + offset, image.height());
+    mCurrentImageFrame.setGeometry(image.width() + offset, 6 * offset, 2 * image.width() + offset, image.height());
     mCurrentImageFrame.setPixmap(QPixmap::fromImage(mCurrentImage));
 
-    this->setFixedSize(2 * image.width() + offset, image.height());
+    mInfoLabel.setParent(this);
+    mInfoLabel.setGeometry(offset, offset, 2 * image.width() + offset, 4 * offset);
+    mInfoLabel.setText(infoText);
+
+    this->setFixedSize(2 * image.width() + offset, image.height() + 6 * offset);
     this->show();
 }
 
