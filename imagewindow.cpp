@@ -1,6 +1,12 @@
+#include <QImage>
+#include <QMainWindow>
 #include <QPixmap>
+#include <QPoint>
+#include <QSize>
+#include <QWidget>
 
 #include "imagewindow.h"
+#include "polygon.h"
 #include "ui_imagewindow.h"
 
 ImageWindow::ImageWindow(QWidget* parent, QImage image) :

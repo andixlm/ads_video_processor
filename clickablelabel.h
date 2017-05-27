@@ -3,6 +3,7 @@
 
 #include <QLabel>
 #include <QMouseEvent>
+#include <QWidget>
 
 class ClickableLabel : public QLabel
 {

@@ -1,6 +1,9 @@
 #ifndef IMAGETREE_H
 #define IMAGETREE_H
 
+#include <QImage>
+#include <QVector>
+
 #include "polygon.h"
 
 class ImageTree;

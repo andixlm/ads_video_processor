@@ -1,7 +1,10 @@
 #include <QtMath>
 #include <QPixmap>
+#include <QPoint>
+#include <QString>
 
 #include "imagewindow.h"
+#include "polygon.h"
 #include "rgb.h"
 #include "ui_imagewindow.h"
 

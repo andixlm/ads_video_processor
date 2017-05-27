@@ -1,4 +1,6 @@
 #include <QColor>
+#include <QImage>
+#include <QPoint>
 
 #include "exception.h"
 #include "rgb.h"
@@ -54,7 +56,7 @@ double Rgb::calculateBrightness(int red, int green, int blue)
     if (red < 0 || red > 255 || green < 0 || green > 255 || blue < 0 || blue > 255)
         throw Exception::ValueError();
 
-    return 0.299 * static_cast<double>(red) +
+    return  0.299 * static_cast<double>(red) +
             0.587 * static_cast<double>(green) +
             0.114 * static_cast<double>(blue);
 }

@@ -1,7 +1,10 @@
+#include <QImage>
 #include <QQueue>
+#include <QVector>
 
 #include "exception.h"
 #include "imagetree.h"
+#include "polygon.h"
 #include "tools.h"
 
 Node::Node(Polygon polygon, Node* parent, Node* leftChild, Node* rightChild)

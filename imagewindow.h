@@ -4,9 +4,12 @@
 #include <QImage>
 #include <QLabel>
 #include <QMainWindow>
+#include <QMouseEvent>
+#include <QWidget>
 
 #include "clickablelabel.h"
 #include "imagetree.h"
+#include "polygon.h"
 #include "tools.h"
 
 namespace Ui {

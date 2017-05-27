@@ -1,6 +1,9 @@
 #include <QApplication>
 #include <QFileDialog>
+#include <QImage>
+#include <QString>
 
+#include "imagewindow.h"
 #include "mainwindow.h"
 
 void MainWindow::on_actionOpen_triggered()
@@ -8,7 +11,7 @@ void MainWindow::on_actionOpen_triggered()
     if (!mPlayer->isStopped())
         mPlayer->pause();
 
-    QString fileName = QFileDialog::getOpenFileName(this, tr("Open Video"), ".", tr("*.avi"));
+    QString fileName = QFileDialog::getOpenFileName(this, "Open Video", ".", "*.avi");
 
     if (!fileName.isEmpty()) {
         mPlayer->closeVideo();
@@ -38,7 +41,7 @@ void MainWindow::on_actionUnpackVideo_triggered()
     if (!mPlayer->isStopped())
         mPlayer->pause();
 
-    QString dirName = QFileDialog::getExistingDirectory(this, tr("Choose Directory"));
+    QString dirName = QFileDialog::getExistingDirectory(this, "Choose Directory");
     if (!dirName.isEmpty())
         mPlayer->unpackVideo(dirName.toStdString());
 }
@@ -46,6 +49,7 @@ void MainWindow::on_actionUnpackVideo_triggered()
 void MainWindow::on_actionOpenCurrentFrame_triggered()
 {
     QImage currentFrame = getCurrentFrame();
+
     if (currentFrame.isNull())
         return;
 
@@ -54,6 +58,7 @@ void MainWindow::on_actionOpenCurrentFrame_triggered()
 
     if (mImageWindow)
         delete mImageWindow;
+
     mImageWindow = new ImageWindow(this, currentFrame);
     mImageWindow->setFixedSize(mImageWindow->width(), mImageWindow->height());
     mImageWindow->show();

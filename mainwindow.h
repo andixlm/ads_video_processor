@@ -21,6 +21,7 @@ public:
 
 private:
     Ui::MainWindow* ui;
+
     Player* mPlayer;
     ImageWindow* mImageWindow;
 

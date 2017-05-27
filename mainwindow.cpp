@@ -1,7 +1,9 @@
 #include <QFileDialog>
 #include <QImage>
 #include <QMainWindow>
+#include <QPixmap>
 #include <QString>
+#include <QWidget>
 
 #include "mainwindow.h"
 #include "player.h"

@@ -1,3 +1,7 @@
+#include <QLabel>
+#include <QMouseEvent>
+#include <QWidget>
+
 #include "clickablelabel.h"
 #include "imagewindow.h"
 

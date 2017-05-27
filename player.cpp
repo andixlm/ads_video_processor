@@ -1,3 +1,8 @@
+#include <QImage>
+#include <QObject>
+#include <QString>
+#include <QThread>
+
 #include "player.h"
 
 const int FRAME_CHANNEL_RGB = 3;
@@ -87,7 +92,7 @@ bool Player::unpackVideo(std::string dirName)
         if (mFrame.channels() == FRAME_CHANNEL_RGB) {
             cv::cvtColor(mFrame, mRGBFrame, CV_BGR2RGB);
             mImage = QImage(static_cast<const unsigned char*>(mRGBFrame.data),
-                                  mRGBFrame.cols, mRGBFrame.rows, QImage::Format_RGB888);
+                            mRGBFrame.cols, mRGBFrame.rows, QImage::Format_RGB888);
         } else {
             mImage = QImage(static_cast<const unsigned char*>(mFrame.data),
                             mFrame.cols, mFrame.rows, QImage::Format_Indexed8);
@@ -127,7 +132,7 @@ void Player::run()
         if (mFrame.channels() == FRAME_CHANNEL_RGB) {
             cv::cvtColor(mFrame, mRGBFrame, CV_BGR2RGB);
             mImage = QImage(static_cast<const unsigned char*>(mRGBFrame.data),
-                                  mRGBFrame.cols, mRGBFrame.rows, QImage::Format_RGB888);
+                            mRGBFrame.cols, mRGBFrame.rows, QImage::Format_RGB888);
         } else {
             mImage = QImage(static_cast<const unsigned char*>(mFrame.data),
                             mFrame.cols, mFrame.rows, QImage::Format_Indexed8);

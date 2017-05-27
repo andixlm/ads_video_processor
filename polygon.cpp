@@ -1,4 +1,19 @@
+#include <QImage>
+#include <QPoint>
+
 #include "polygon.h"
+#include "rgb.h"
+
+bool Polygon::operator==(Polygon& rhs)
+{
+    return (this->getTopLeft() == rhs.getTopLeft() && this->getBottomRight() == rhs.getBottomRight());
+}
+
+bool Polygon::operator!=(Polygon& rhs)
+{
+    return !(*this == rhs);
+}
+
 
 Polygon::Polygon(QImage& image, QPoint topLeft, QPoint bottomRight)
 {
@@ -48,27 +63,12 @@ bool Polygon::isSize(int size) {
 
 bool Polygon::hasPoint(double x, double y)
 {
-    return
-            x >= static_cast<double>(getTopLeft().x()) && x <= static_cast<double>(getBottomRight().x()) &&
+    return  x >= static_cast<double>(getTopLeft().x()) && x <= static_cast<double>(getBottomRight().x()) &&
             y >= static_cast<double>(getTopLeft().y()) && y <= static_cast<double>(getBottomRight().y());
 }
 
 bool Polygon::hasPoint(QPoint point)
 {
-    if (getTopLeft() == point)
-        return true;
-
-    return
-            point.x() >= getTopLeft().x() && point.x() <= getBottomRight().x() &&
+    return  point.x() >= getTopLeft().x() && point.x() <= getBottomRight().x() &&
             point.y() >= getTopLeft().y() && point.y() <= getBottomRight().y();
-}
-
-bool Polygon::operator==(Polygon& rhs)
-{
-    return (this->getTopLeft() == rhs.getTopLeft() && this->getBottomRight() == rhs.getBottomRight());
-}
-
-bool Polygon::operator!=(Polygon& rhs)
-{
-    return !(*this == rhs);
 }

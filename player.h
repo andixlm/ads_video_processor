@@ -3,6 +3,7 @@
 
 #include <QImage>
 #include <QMutex>
+#include <QObject>
 #include <QThread>
 #include <QWaitCondition>
 
